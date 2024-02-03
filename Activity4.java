@@ -14,7 +14,7 @@ import java.util.Scanner;
 
 public class Activity4 implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private static final String[] path = {"C:\\JavaObjectSaveFiles\\TVSave.bin"};
+	private static final String[] path = {"C:\\JavaObjectSaveFiles\\TVSave.bin", "C:\\JavaObjectSaveFiles\\TVSave2.bin", "C:\\JavaObjectSaveFiles\\TVSave3.bin"};
 	static Scanner input = new Scanner(System.in);
 	
 	private String brand;
