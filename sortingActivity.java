@@ -6,7 +6,7 @@ public class sortingActivity {
 		do{
 			loopSomeMore = false; // sets loop to false
 			for(int j = 0; j < a.length -1; j++) { // checks when j is less than the length of the array 'a', if true, add 1 to j
-				if(a[j] > a[j+1]) { // check when the array 'a' of j is greater than the next slot in the array then sorts it down if true
+				if(a[j] < a[j+1]) { // check when the array 'a' of j is greater than the next slot in the array then sorts it down if true
 					int temp = a[j];
 					a[j] = a[j+1];
 					a[j+1] = temp;
@@ -16,12 +16,12 @@ public class sortingActivity {
 		}while(loopSomeMore);
 	}
 	
-	public static void InsertionSort(int a[]) {
+	public static void InsertionSort(int a[]) { // TODO sort backwards
 		int itemToInsert, j;
 		boolean keepGoing;
 		
 		for(int k = 1; k < a.length; k++) {
-			itemToInsert = a[k]; //
+			itemToInsert = a[k]; // 
 			j = k-1;
 			keepGoing = true;
 			
@@ -40,7 +40,7 @@ public class sortingActivity {
 		}
 	}
 	
-	public static void SelectionSort(int a[]) {
+	public static void SelectionSort(int a[]) { // TODO sort backwards
 		int min, minIndex;
 		
 		for(int i = 0;i < a.length; ++i) {
