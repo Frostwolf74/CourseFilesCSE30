@@ -43,18 +43,18 @@ public class sortingActivity {
 	public static void SelectionSort(int a[]) { // TODO sort backwards
 		int min, minIndex;
 		
-		for(int i = 0;i < a.length; ++i) {
-			min = a[i]; //
-			minIndex = i;
+		for(int i = 0; i < a.length; ++i) {
+			min = a[i]; // [first pass, i = 0] the minimum is set to the first element of the array 
+			minIndex = i; // the index of the first element is saved 
 			
-			for (int j = i + 1; j < a.length; ++j) { //
-				if (a[j] < min) { //
+			for (int j = i + 1; j < a.length; ++j) { // the secondary index is set equal to the index directly in front of the current index 
+				if (a[j] < min) { // the element directly in front of the index i is compared to min, if it is less than min, min will be set to that array index value
 					min = a[j];
 					minIndex = j;
 				}
 			}
 			
-			a[minIndex] = a[i]; //
+			a[minIndex] = a[i]; // the array of the min index is set to the array of the index i
 			a[i] = min;
 		}
 	}
