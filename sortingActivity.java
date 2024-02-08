@@ -21,18 +21,18 @@ public class sortingActivity {
 		boolean keepGoing;
 		
 		for(int k = 1; k < a.length; k++) {
-			itemToInsert = a[k]; // 
-			j = k-1;
+			itemToInsert = a[k]; // sets the inserted variable to the be the second index of the array
+			j = k-1; // sets the next index variable to correlate with the for loop but starting at 0
 			keepGoing = true;
 			
 			while((j >= 0) && keepGoing) {
-				if (itemToInsert < a[j] ) { //
+				if (itemToInsert > a[j] ) { // checks if the inserted variable (the one directly in front of the selected array element) is less than the selected array element, if true when swap them
 					a[j + 1] = a[j];
 					j--;
 					if(j == -1)
 					a[0] = itemToInsert;
 				}
-				else { //
+				else { // moves the inserted variable up by 1
 					keepGoing = false;
 					a[j + 1] = itemToInsert;
 				}
@@ -48,7 +48,7 @@ public class sortingActivity {
 			minIndex = i; // the index of the first element is saved 
 			
 			for (int j = i + 1; j < a.length; ++j) { // the secondary index is set equal to the index directly in front of the current index 
-				if (a[j] < min) { // the element directly in front of the index i is compared to min, if it is less than min, min will be set to that array index value
+				if (a[j] > min) { // the element directly in front of the index i is compared to min, if it is less than min, min will be set to that array index value
 					min = a[j];
 					minIndex = j;
 				}
