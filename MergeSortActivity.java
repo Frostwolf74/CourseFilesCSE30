@@ -26,7 +26,7 @@ public class MergeSortActivity {
 		 // splitting into 2 parts to divide and conquer 
 		       
 		 while (i <= mid && j <= end) { // from the start to the middle of the array (first segment) check if the main array has an element of index i that is less than the main array of index j  
-		      if(numList[i] < numList[j]) { 
+		      if(numList[i] > numList[j]) { 
 		           temp[k++] = numList[i++]; // switch the places of the indexes
 		        }
 		      else {
