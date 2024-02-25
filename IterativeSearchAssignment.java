@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class IterativeSearchAssignment {
 	static Scanner input = new Scanner(System.in);
 	
-	static void linearSearch(int[] a) {
+	static void linearSearch(int[] a) { 
 		System.out.println("(Linear) Input a number to search: ");
 		int numIn = input.nextInt();
 		
@@ -30,7 +30,7 @@ public class IterativeSearchAssignment {
 	}
 	
 	static void binarySearch(int[] a) {
-		/// sorting
+		// insertion sort to prepare array for search
 		int itemToInsert, j;
 		boolean reset;
 		
@@ -53,7 +53,7 @@ public class IterativeSearchAssignment {
 			}
 		}
 		
-		/// binary search with sorted array
+		// binary search with sorted array
 		
 		System.out.println("\n\n(Binary) Input a number to search: ");
 		int numIn = input.nextInt();
@@ -64,11 +64,11 @@ public class IterativeSearchAssignment {
 		while(low+1 < high) {
 			int temp = (low + high)/2; // move index to middle of array
 			
-			if(a[temp] > numIn) { // if the currently selected element is greater than the input number then set the index to the high variable, otherwise set it to the low variable
-				high = temp;
+			if(a[temp] > numIn) { // when the current element is higher than the target number
+				high = temp; // the end index is moved to the middle therefore eliminating the upper half of the array
 			}
 			else {
-				low = temp;
+				low = temp; // the start index is moved to the middle therefore eliminating the lower half of the array
 			}
 		}
 		
@@ -80,12 +80,15 @@ public class IterativeSearchAssignment {
 		}
 	}
 	
+	static void binarySearchMultipleEntries(int[] a) {
+		
+	}
 	
 	public static void main(String[] args) {
 		int[] OriginalArray = {4,10,6,1,8,10,9,12,14,6,15,6,7,10,8,2,7,3,9,1};
-		int[] newOriginalArray = {4,10,6,1,8,10,9,12,14,6,15,6,7,10,8,2,7,3,9,1};
 		
 		linearSearch(OriginalArray);
-		binarySearch(newOriginalArray);
+		binarySearch(OriginalArray);
+		binarySearchMultipleEntries(OriginalArray);
 	}
 }
