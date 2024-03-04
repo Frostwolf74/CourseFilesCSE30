@@ -4,41 +4,42 @@ import java.util.Scanner;
 
 public class IterativeSearchAssignment {
 	static Scanner input = new Scanner(System.in);
-
+	
 	static void linearSearch(int[] a) {
 		System.out.println("(Linear) Input a number to search: ");
 		int numIn = input.nextInt();
-
+		
 		int i=0;
 		boolean indexIdentified = false;
 		int numAmt=0;
-
-		for(i = 0; i < a.length; ++i) { // runs through and identifies matching numbers and prints each one with its respective index
+		
+		for(i = 0; i < a.length; ++i) { // runs through and identifies matching numbers and prints each one with its respective index 
 			if(numIn == a[i]) {
 				System.out.printf("The number is at index %d or position %d\n", i, i+1);
 				indexIdentified = true;
-				++numAmt; // number of instances
+				++numAmt; // number of instances 
 			}
 		}
-
+		
 		if(i == a.length && indexIdentified == false) { // if it reaches the end of the array and no numbers have been identified
-			System.out.println("That number is not in the array");
+			System.out.println("That number is not in the array"); 
 		}
 		if(indexIdentified == true) { // if numbers have been identified, print the amount
 			System.out.printf("There are %d instance(s) of this number in the array", numAmt);
 		}
 	}
-
-	static void binarySearch(int[] a) {
-		// insertion sort to prepare array for search
+	
+	static int binarySearch(int[] a) {
+		// sorting
+		
 		int itemToInsert, j;
 		boolean reset;
-
+		
 		for(int k = 1; k < a.length; k++) {
-			itemToInsert = a[k];
-			j = k-1;
+			itemToInsert = a[k]; 
+			j = k-1; 
 			reset = false;
-
+			
 			while((j >= 0) && !reset) {
 				if (itemToInsert < a[j] ) {
 					a[j + 1] = a[j];
@@ -52,52 +53,58 @@ public class IterativeSearchAssignment {
 				}
 			}
 		}
-
+		
+		System.out.println("\n");
+		for(int l = 0; l < a.length; ++l) {
+			System.out.print(a[l]+ " ");
+		}
+		
 		// binary search with sorted array
-
+		
 		System.out.println("\n\n(Binary) Input a number to search: ");
 		int numIn = input.nextInt();
-
+		
+		int mid = 0;
+		
 		int low = 0;
-		int high = a.length;
-		int m = 0;
-		int n = 0;
-
-		do {
-			m = 0;
-			int temp=0;
-			while(low+1 < high) {
-
-				temp = (low + high)/2;// move index to middle of array
-
-				if(a[temp] > numIn) { // if the currently selected element is greater than the input number then set the index to the high variable, otherwise set it to the low variable
-					high = temp;
+		int high = a.length-1;
+		int count = 0;
+		while(low <= high) {
+				
+			mid = (low + high)/2;
+				
+			if(a[mid] == numIn) { // if a exact match is found, print its index
+				++count; // keeps track of number instances
+				
+				for(int k = mid+1; k <= a.length-1; ++k) { 
+					if( a[k] == numIn )
+						count++;
 				}
-				else {
-					low = temp;
+				for(int k = mid-1; k > -1; --k) { 
+					if( a[k] == numIn)
+						count++;
 				}
+				return count;
 			}
-
-			if(a[temp] > numIn) { // when the current element is higher than the target number
-				high = temp; // the end index is moved to the middle therefore eliminating the upper half of the array
+				
+			if(a[mid] > numIn) {
+				high = mid-1; // if the target number is lower than the current index, set the middle of the array to be the highest available index effectively eliminating the upper half of the array
 			}
 			else {
-				low = temp; // the start index is moved to the middle therefore eliminating the lower half of the array
+				low = mid+1; // vice versa eliminate the lower half of the array
 			}
-		}while(m == 1);
-
-		System.out.printf("There is %d instances of this number in the array", n);
+		}
+		return 0;
 	}
-
-	static void binarySearchMultipleEntries(int[] a) {
-
-	}
-
+	
+	
 	public static void main(String[] args) {
 		int[] OriginalArray = {4,10,6,1,8,10,9,12,14,6,15,6,7,10,8,2,7,3,9,1};
-
+		int[] newOriginalArray = {4,10,10,6,1,8,10,9,12,14,6,15,6,7,10,8,2,7,3,9,1};
+		int count;
 		linearSearch(OriginalArray);
-		binarySearch(OriginalArray);
-		binarySearchMultipleEntries(OriginalArray);
+		count = binarySearch(OriginalArray);
+
+		System.out.printf("There are %d instances of the number in the array", count);
 	}
 }
