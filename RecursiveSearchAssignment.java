@@ -27,13 +27,6 @@ public class RecursiveSearchAssignment {
 				}
 			}
 		}
-
-		// XXX debug
-		System.out.println("\n");
-		for(int n = 0; n < a.length; ++n) {
-			System.out.print(a[n]+ " ");
-		}
-
 		return a;
 	}
 	
@@ -72,7 +65,7 @@ public class RecursiveSearchAssignment {
 			//is it less
 			//recursively call function but with mid+1 for low and high
 			else {
-				return recursiveBinary(a, mid+1, high, numIn);
+				recursiveBinary(a, mid+1, high, numIn);
 			}
 		}
 		return 0;	
@@ -85,8 +78,8 @@ public class RecursiveSearchAssignment {
 		int numIn = input.nextInt();
 		
 		int[] sortedArray = insertionSort(OriginalArray);
-		int count = recursiveBinary(sortedArray, 0, sortedArray.length-1, numIn); // new sorted array put into recursive search 
-										// a		       low									high			  target
+		int count = recursiveBinary(sortedArray, 0, sortedArray.length-1, numIn); // new sorted array put into recursive binary search then a count is returned
+										// a    low		high	         target
 		System.out.println("\n\nThere are " + count + " instances of this number in the array");
 	}
 }
