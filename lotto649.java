@@ -3,12 +3,18 @@ package Activity;
 import java.util.Random;
 
 public class lotto649 {
-	public static int[] randomizeArray(int amt) { // randomizes array without repeating digits 
+	static int[] randomizeArray(int amt) { // randomises array without repeating digits 
 		int[] a = new int[amt];
 		for(int i = 0; i < amt; ++i){
 			a[i] = i+1;
 		}
-
+		
+		// XXX debug
+		System.out.println("Original array: ");
+		for(int i = 0; i < a.length; ++i) {
+			System.out.println(a[i]);
+		}
+		
 		Random rand = new Random();
 
         for (int i = a.length - 1; i > 0; i--) {
@@ -21,8 +27,23 @@ public class lotto649 {
         return a;
     }
 	
+	static void generateTicket(int[][] tickets, int t) {
+		for(int i = 0; i < tickets.length; ++i) {
+			double rand = (Math.random() * 49) + 1;
+			
+		}
+		
+//		for(i; i < tickets.length; ++i)
+//			Random rand = new Random()%49-1
+//					checkDuplicate(tickets, t)
+//					sort()
+
+	}
+	
 	public static void main(String[] args) {		
-        int[] out = randomizeArray(49);
+		int[] out = randomizeArray(49);
+        
+        System.out.println("Randomized array: ");
         
         for(int i=0; i < out.length; i++) {
         	System.out.println(out[i]);
