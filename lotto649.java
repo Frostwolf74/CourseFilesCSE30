@@ -1,65 +1,82 @@
 package Activity;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class lotto649 {
-	static int[] randomizeArray(int amt) { // randomises array without repeating digits 
-		int[] a = new int[amt];
-		for(int i = 0; i < amt; ++i){
-			a[i] = i+1;
-		}
-		
-		// XXX debug
-		System.out.println("Original array: ");
-		for(int i = 0; i < a.length; ++i) {
-			System.out.println(a[i]);
-		}
-		
-		Random rand = new Random();
-
-        for (int i = a.length - 1; i > 0; i--) {
-            int index = rand.nextInt(i + 1);
-
-            int temp = a[i];
-            a[i] = a[index];
-            a[index] = temp;
-        }
-        return a;
-    }
+	static Scanner input = new Scanner(System.in);
 	
-	static void generateTicket(int[][] tickets, int t) {
-		for(int i = 0; i < tickets.length; ++i) {
-			double rand = (Math.random() * 49) + 1;
-			
+//	public static int[] randomizeArray(int amt) { // randomizes array without repeating digits 
+//		int[] a = new int[amt];
+//		for(int i = 0; i < amt; ++i){
+//			a[i] = i+1;
+//		}
+//
+//		Random rand = new Random();
+//
+//        for (int i = a.length - 1; i > 0; i--) {
+//            int index = rand.nextInt(i + 1);
+//
+//            int temp = a[i];
+//            a[i] = a[index];
+//            a[index] = temp;
+//        }
+//        return a;
+//    }
+	
+	public static void duplicate(int[][] ticket, int t) {
+		for(int i = 0; i < 6; ++i) {
+			for(int j = 0; j < ticket[0].length; ++j) {
+				generateTicket(ticket, t);	
+			}
 		}
-		
-//		for(i; i < tickets.length; ++i)
-//			Random rand = new Random()%49-1
-//					checkDuplicate(tickets, t)
-//					sort()
-
 	}
 	
+	public static void generateTicket(int[][] ticket, int t) {
+		for(int i = 0; i < 7; ++i) {
+			for(int j = 0; j < 49; ++j) {
+				Random rand = new Random();
+				ticket[i][j] = rand.nextInt(49-1); // i = first 6, j = bonus number
+				
+				duplicate(ticket, t);
+				//sort(ticket); //TODO sort 2d array
+			}
+		}
+	}
+	
+	public static int[] sort(int[] a) {
+		int itemToInsert, j;
+		boolean reset;
+
+		for(int k = 1; k < a.length; k++) {
+			itemToInsert = a[k]; 
+			j = k-1; 
+			reset = false;
+
+			while((j >= 0) && !reset) {
+				if (itemToInsert < a[j] ) {
+					a[j + 1] = a[j];
+					j--;
+					if(j == -1) {
+						a[0] = itemToInsert;
+					}
+				}
+				else {
+					reset = true;
+					a[j + 1] = itemToInsert;
+				}
+			}
+		}
+		return a;
+	}
+
 	public static void main(String[] args) {		
-		int[] out = randomizeArray(49);
+        System.out.println("Enter ticket amount");
+        int ticketAmt = input.nextInt();
+        input.nextLine();
+		
+        int[][] ticket = new int[100][100];
         
-        System.out.println("Randomized array: ");
-        
-        for(int i=0; i < out.length; i++) {
-        	System.out.println(out[i]);
-        }
-        
-        System.out.println("Winning numbers: ");
-        
-        int[] winningNumbers = new int[6];
-        for(int i=0; i < winningNumbers.length; ++i) { // picking 6
-        	winningNumbers[i] = out[i];        
-        }
-        
-        // XXX debug print
-        for(int i=0; i < winningNumbers.length; ++i) {
-        	System.out.println(winningNumbers[i]);
-        }
+        duplicate(ticket, ticketAmt);
 	}
-	
 }
