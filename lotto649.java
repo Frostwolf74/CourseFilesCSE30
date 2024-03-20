@@ -62,15 +62,7 @@ public class lotto649 {
 		int pool = 5000000;
 		int i=0;
 		int[][] winningTicket = new int[1][7];
-		generateTicket(winningTicket, 0);
-		
-		// print winning ticket XXX
-		System.out.print("Winning Ticket #: ");
-    	for(int j=0;j<7;j++)
-    	{
-    		System.out.print(winningTicket[0][j] + " ");   		
-    	}
-    	System.out.print("\n");
+		generateTicket(winningTicket, 0);    	
         
 		System.out.println("Enter ticket amount");
         int ticketAmt = input.nextInt();
@@ -81,7 +73,6 @@ public class lotto649 {
         for(i=0;i<ticketAmt;i++)
         {
         	generateTicket(ticket, i);
-        	System.out.print("Ticket #" + (i+1) + ": ");
         	for(int j=0;j<7;j++)
         	{
         		if(j == 6)
@@ -97,7 +88,6 @@ public class lotto649 {
         	System.out.print("\n");
         }
         
-        //int matchCount=0, matchBonusCount=0, matchIndex=0, matchBonusIndex=0;
         int[] matchCount = new int[ticketAmt], matchBonusCount = new int[ticketAmt];
         
         for(i = 0; i < ticketAmt; ++i) { // exempt the last index for the bonus number
@@ -111,50 +101,36 @@ public class lotto649 {
         		
         		if(ticket[0][6] == winningTicket[0][6]) {
         				matchBonusCount[i]++;
-        			}
-        		
+        		}	
         	}
-        	
-        	
          }	
-        	for(int l = 0; l < matchCount.length; ++l) {
-
-        		if(matchCount[l] > 1)
-        		{
-        			System.out.println("Ticket #"+ (l+1)+" has "+ matchCount[l]+ " matches");
-        		}
-        		
+        for(int l = 0; l < matchCount.length; ++l) {
+        	System.out.print("Ticket #" + (l+1) + ": ");
+        	if(matchCount[l] == 2) {
+        		System.out.println("You won a free play");
         	}
-       
-       
-        
-        System.out.printf("Your ticket matched %d number(s) and %d bonus numbers.", matchCount, matchBonusCount);
-        System.out.print(" You won ");
-        
-//        if(matchCount == 2) {
-//        	System.out.println("Free Play");
-//        }
-//        else if(matchCount == 2 && matchBonusCount == 1) {
-//        	System.out.println("$5");
-//        }
-//        else if(matchCount == 3) {
-//        	System.out.println("$10");
-//        }
-//        else if(matchCount == 4) {
-//        	System.out.println("4% of the Prize Pool");
-//        }
-//        else if(matchCount == 5) {
-//        	System.out.println("5% of the Prize Pool");
-//        }
-//        else if(matchCount == 5 && matchBonusCount == 1) {
-//        	System.out.println("6% of the Prize Pool");
-//        }
-//        else if(matchCount == 6) {
-//        	System.out.println("Jackpot or 79.5% of the Prize Pool");
-//        	System.out.println((ticketAmt*5.00)+pool);
-//        }
-//        else {
-//        	System.out.println("None");
-//        }
+        	else if(matchCount[l] == 2 && matchBonusCount[l] > 0) {
+        		System.out.println("You won $5");
+        	}
+        	else if(matchCount[l] == 3) {
+        		System.out.println("You won $10");
+        	}
+        	else if(matchCount[l] == 4) {
+        		System.out.println("You won 4% of the prize pool"); // TODO
+        	}
+        	else if(matchCount[l] == 5) {
+        		System.out.println("You won 5% of the prize pool"); // TODO	
+        	}
+        	else if(matchCount[l] == 5 && matchBonusCount[l] > 1) {
+        		System.out.println("You won 6% of the prize pool");
+        	}
+        	else if(matchCount[l] == 6) {
+        		System.out.println("You won the jackpot or 79.5% of the Prize Pool");
+            	System.out.println((ticketAmt*5.00)+pool);
+        	}
+        	else {
+        		System.out.println("None");
+        	}
+        }   
 	}
 }
