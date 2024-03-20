@@ -116,17 +116,20 @@ public class lotto649 {
         		System.out.println("You won $10");
         	}
         	else if(matchCount[l] == 4) {
-        		System.out.println("You won 4% of the prize pool"); // TODO
+        		System.out.println("You won 4% of the prize pool");
+        		System.out.println(" or " + 0.04*((ticketAmt*5.00)+pool));
         	}
         	else if(matchCount[l] == 5) {
-        		System.out.println("You won 5% of the prize pool"); // TODO	
+        		System.out.println("You won 5% of the prize pool"); 
+        		System.out.println(" or " + 0.05*((ticketAmt*5.00)+pool));
         	}
         	else if(matchCount[l] == 5 && matchBonusCount[l] > 1) {
         		System.out.println("You won 6% of the prize pool");
+        		System.out.println(" or " + 0.06*((ticketAmt*5.00)+pool));
         	}
         	else if(matchCount[l] == 6) {
         		System.out.println("You won the jackpot or 79.5% of the Prize Pool");
-            	System.out.println((ticketAmt*5.00)+pool);
+            	System.out.println(0.795*((ticketAmt*5.00)+pool));
         	}
         	else {
         		System.out.println("None");
