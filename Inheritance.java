@@ -21,7 +21,11 @@ public class Inheritance {
 	private int milage, year;
 	
 	public Inheritance(String make, String model, String colour, int milage, int year) {
-		
+		this.make = make;
+		this.model = model;
+		this.colour = colour;
+		this.milage = milage;
+		this.year = year;
 	}
 	
 	public Inheritance() {
@@ -39,20 +43,75 @@ public class Inheritance {
 		input.nextLine();
 	}
 	
-	public static void method1() {
-		
+	public String getMake() {
+		return make;
+	}
+
+	public void setMake(String make) {
+		this.make = make;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public String getColour() {
+		return colour;
+	}
+
+	public void setColour(String colour) {
+		this.colour = colour;
+	}
+
+	public int getMilage() {
+		return milage;
+	}
+
+	public void setMilage(int milage) {
+		this.milage = milage;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
 	}
 	
-	public static void method2() {
-		
+	public String toString() {
+		return "make: " + make + "\nmodel: " + model + "\ncolour: " + colour + "\nmilage: " + milage + "\nyear: " + year;
+	}
+
+	public void setAll() {
+		System.out.println("Enter make: ");
+		this.make = input.nextLine();
+		System.out.println("Enter model: ");
+		this.model = input.nextLine();
+		System.out.println("Enter colour: ");
+		this.colour = input.nextLine();
+		System.out.println("Enter milage: ");
+		this.milage = input.nextInt();
+		input.nextLine();
+		System.out.println("Enter year: ");
+		this.year = input.nextInt();
+		input.nextLine();
 	}
 	
-	public static void method3() {
-		
+	public void method2() {
+		System.out.println("This is method2");
+	}
+	
+	public void method3() {
+		System.out.println("This is method3");
 	}
 
 	public static void main(String[] args) {
-		
+		Inheritance car = new Inheritance();
 	}
 }
 
