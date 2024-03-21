@@ -80,7 +80,27 @@ public class lotto649 {
 	}
 	
 	public static void debugWin(int[][] winningTicket, int[][] ticket) {
-		ticket = Arrays.copyOf(winningTicket, winningTicket.length);
+		System.out.print("Winning Ticket #: ");
+    	for(int j=0;j<7;j++)
+    	{
+    		if(j == 6) {
+    			System.out.print("[" + winningTicket[0][j] + "] ");
+    		}
+    		else {
+    			System.out.print(winningTicket[0][j] + " ");
+    		}	
+    	}
+    	System.out.print("\n");
+    	
+    	for(int i = 0; i < 7; ++i) {
+    		System.out.printf("Enter ticket number %d: ", i+1);
+
+    		if(i == 6) {
+    			System.out.print("(bonus number) ");
+    		}
+
+    		ticket[0][i] = input.nextInt();
+    	}	
 	}
 
 	public static void main(String[] args) {	
@@ -95,10 +115,10 @@ public class lotto649 {
 		
         int[][] ticket = new int[ticketAmt][7];
        
+       	debugWin(winningTicket, ticket);    //TODO debug
+        										
+        //normalPlay(ticket, ticketAmt, i);	//TODO normal
         
-        debugWin(winningTicket, ticket);
-        
-        //normalPlay(ticket, ticketAmt, i);
         
         int[] matchCount = new int[ticketAmt], matchBonusCount = new int[ticketAmt];
         
@@ -117,7 +137,7 @@ public class lotto649 {
         	}
          }	
         for(int l = 0; l < matchCount.length; ++l) {
-        	System.out.print("Ticket #" + (l+1) + ": ");
+        	System.out.println("Ticket #" + (l+1) + ": ");
         	if(matchCount[l] == 2) {
         		System.out.println("You won a free play");
         	}
