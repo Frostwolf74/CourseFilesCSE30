@@ -52,9 +52,11 @@ public class Carnivora {
 		this.length = length;
 	}
 	
+	//add getters for subclasses to import variables over to the superclass 
+	
 	public static void main(String[] args) {
-		Carnivora CanisLupus = new Carnivora();
-		Carnivora FelisCatus = new Carnivora();
+		Carnivora human1 = new Carnivora();
+		Carnivora fluffy = new Carnivora();
 		Carnivora CrocutaCrocuta = new Carnivora(); 
 		
 		System.out.println("Kingdom: Animalia\nOrder:Carnivora\n"); // shared information
@@ -62,7 +64,7 @@ public class Carnivora {
 		System.out.printlnln("Name: " + name + "\nWeight: " + weight + "\nAge: " + age + "\nLength: " + length + "\n");
 		if(CanisLupus instanceof Carnivora) {
 			System.out.println("Family: Canidae\n");
-			System.out.println("Region: " + regionA + "\nSpecies: " + speciesA + "\n");
+			System.out.println("Region: " + CanisLupus.getRegionA() + "\nSpecies: " + speciesA + "\n");
 		}
 			
 		if(FelisCatus instanceof Carnivora) {
