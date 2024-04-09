@@ -35,8 +35,4 @@ public class Canini extends Canidae{
 	public void setTailLength(String tailLength) {
 		this.tailLength = tailLength;
 	}
-	
-	public static void main(String[] args) {
-		Canini CanisLupus = new Canini();
-	}
 }

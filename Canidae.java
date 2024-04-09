@@ -32,8 +32,4 @@ public class Canidae extends Carnivora{
 	public void setFurLength(int furLength) {
 		this.furLength = furLength;
 	}
-
-	public static void main(String[] args) {
-		Canidae CanisLupus = new Canini();
-	}
 }

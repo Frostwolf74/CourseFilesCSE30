@@ -31,8 +31,4 @@ public class Felinae extends Felidae {
 	public void setColour(String colour) {
 		this.colour = colour;
 	}
-
-	public static void main(String[] args) {
-		Felinae Catus = new Felinae();
-	}
 }

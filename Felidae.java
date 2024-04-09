@@ -12,7 +12,7 @@ public class Felidae extends Carnivora {
 	public Felidae() {
 		System.out.println("Enter jump height (cm): ");
 		jumpHeight = input.nextInt();
-		System.out.println("Enter bite strength (N•M, int): ");
+		System.out.println("Enter bite strength (Nï¿½M, int): ");
 		biteStrength = input.nextInt(); 
 	}
 	
@@ -30,9 +30,5 @@ public class Felidae extends Carnivora {
 
 	public void setBiteStrength(int biteStrength) {
 		this.biteStrength = biteStrength;
-	}
-
-	public static void main(String[] args) {
-		Felidae Felis = new Felinae();
 	}
 }
