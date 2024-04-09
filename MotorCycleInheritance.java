@@ -2,75 +2,101 @@ package inheritance;
 
 import java.util.Scanner;
 
-public class MotorCycleInheritance extends MotorVehicleInheritance {
-	private int  wheels;
-	private boolean helmet;
+public class MotorCycleInheritance {
+	private String make, model, colour;
+	private int milage, year;
 	
 	static Scanner input = new Scanner(System.in);
 	
-	public MotorCycleInheritance(String make, String model, String colour, int milage, int year, boolean helmet, int wheels) {
-		super(make, model, colour, milage, year); // inherit variables from the parent
-		this.helmet = helmet;
-		this.wheels = wheels;
+	public MotorCycleInheritance(String make, String model, String colour, int milage, int year) {
+		this.make = make;
+		this.model = model;
+		this.colour = colour;
+		this.milage = milage;
+		this.year = year;
 	}
 	
 	public MotorCycleInheritance() {
-		System.out.println("Enter number of wheels: ");
-		setWheels(input.nextInt());
-		System.out.println("Does this vehicle have a helmet (true/false): ");
-		setHelmet(input.nextBoolean());
+		System.out.println("Input make: ");
+		setMake(input.nextLine());
+		System.out.println("Input model: ");
+		setModel(input.nextLine());
+		System.out.println("Input colour: ");
+		setColour(input.nextLine());
+		System.out.println("Input milage: ");
+		setMilage(input.nextInt());
+		System.out.println("Input year: ");
+		setYear(input.nextInt());
 	}
 	
 	public void displayMilage() {
-		System.out.println("Milage: " + getMilage());
+		System.out.println(getMilage());
 	}
 	
 	public void displayAllString() {
-		System.out.printf("\nMake: %s\nModel: %s\nColour: %s", getMake(), getModel(), getColour());
+		System.out.printf("Make: %s\nModel: %s\nColour: %s", this.make, this.model, this.colour);
 	}
 	
-	public void newSetYear() {
+	public void setYear() {
 		System.out.println("Input new year: ");
 		int newYear = input.nextInt();
 		
 		setYear(newYear);
 	}
 	
-	public void displayWheels() {
-		System.out.printf("There are: %d wheels", wheels);
+	public String getMake() {
+		return make;
+	}
+
+	public void setMake(String make) {
+		this.make = make;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public String getColour() {
+		return colour;
+	}
+
+	public void setColour(String colour) {
+		this.colour = colour;
+	}
+
+	public int getMilage() {
+		return milage;
+	}
+
+	public void setMilage(int milage) {
+		this.milage = milage;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
 	}
 	
-	public boolean hasHelmet() {
-		return helmet;
-	}
-	
-	public int getWheels() {
-		return wheels;
-	}
-
-	public void setWheels(int wheels) {
-		this.wheels = wheels;
-	}
-
-	public boolean isHelmet() {
-		return helmet;
-	}
-
-	public void setHelmet(boolean helmet) {
-		this.helmet = helmet;
-	}
-
 	public String toString() {
-		return "Make: " + getMake() + "\nModel: " + getModel() + "\nColour: " + getColour() + "\nMilage: " + getMilage() + "\nYear: " + getYear() + "\nWheels: " + getWheels() + "\nHelmet: " + isHelmet();
+		return "Make: " + make + "\nModel: " + model + "\nColour: " + colour + "\nMilage: " + milage + "\nYear: " + year;
 	}
 
 	public static void main(String[] args) {
 		MotorCycleInheritance motorCycle = new MotorCycleInheritance();
 		
+		System.out.println(motorCycle);
+		
 		int option=-1;
 		boolean reset=false;
 		do {reset=false;
-			System.out.println("Select an option: 1. Show milage, 2. Show make, model and colour, 3. Edit year");
+			System.out.println("Select an option: 1. Show milage, 2. Show all, 3. Edit year");
 			input.nextLine();
 			
 			if(input.hasNextInt()) {
@@ -89,7 +115,7 @@ public class MotorCycleInheritance extends MotorVehicleInheritance {
 					motorCycle.displayAllString();
 					break;
 				case 3:
-					motorCycle.newSetYear();
+					motorCycle.setYear();
 					break;
 				case -1:
 					break;
@@ -99,6 +125,6 @@ public class MotorCycleInheritance extends MotorVehicleInheritance {
 					break;
 			}
 		}while(reset);
-		System.out.println("\n" + motorCycle);
+		System.out.println(motorCycle);
 	}
 }

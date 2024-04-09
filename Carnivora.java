@@ -3,21 +3,31 @@ package inheritance;
 import java.util.Scanner;
 
 public class Carnivora {
-	private String name;
+	private String name, species;
 	private float weight;
-	private int age, length;
+	private int age;
 	
 	static Scanner input = new Scanner(System.in);
 	
-	public Carnivora(String name, float weight, int age, int length) {
+	public Carnivora(String name, float weight, int age, String species) {
 		this.name = name;
 		this.weight = weight;
 		this.age = age;
-		this.length = length;
+		this.species = species;
 	}
 	
 	public Carnivora() {
-		System.out.println("");
+		System.out.println("Enter name: ");
+		name = input.nextLine();
+		input.nextLine();
+		System.out.println("Enter weight (kg, int): ");
+		weight = input.nextInt();
+		input.nextLine();
+		System.out.println("Enter age: ");
+		age = input.nextInt();
+		input.nextLine();
+		System.out.println("Enter species: ");
+		species = input.nextLine();
 	}
 
 	public String getName() {
@@ -44,36 +54,40 @@ public class Carnivora {
 		this.age = age;
 	}
 
-	public int getLength() {
-		return length;
+	public String getSpecies() {
+		return species;
 	}
 
-	public void setLength(int length) {
-		this.length = length;
+	public void setSpecies(String species) {
+		this.species = species;
 	}
-	
-	//add getters for subclasses to import variables over to the superclass 
 	
 	public static void main(String[] args) {
-		Carnivora human1 = new Carnivora();
-		Carnivora fluffy = new Carnivora();
-		Carnivora CrocutaCrocuta = new Carnivora(); 
+		Carnivora CanisLupus = new Canidae();
+		Carnivora FelisCatus = new Felidae();
 		
+		introducer(CanisLupus, FelisCatus);
+	}
+	
+	public static void introducer(Carnivora CanisLupus, Carnivora FelisCatus) {
 		System.out.println("Kingdom: Animalia\nOrder:Carnivora\n"); // shared information
-
-		System.out.printlnln("Name: " + name + "\nWeight: " + weight + "\nAge: " + age + "\nLength: " + length + "\n");
+		
+		introducerExtension(CanisLupus);
+		introducerExtension(FelisCatus);
+		
+		// name, weight, age, length, eyeColour, furLength, earType, tailLength, jumpHeight, biteStrength, region, colour
+		
 		if(CanisLupus instanceof Carnivora) {
-			System.out.println("Family: Canidae\n");
-			System.out.println("Region: " + CanisLupus.getRegionA() + "\nSpecies: " + speciesA + "\n");
+			System.out.println("Family: Canidae\n");	
+			System.out.println("Eye Colour: " + Canidae.getEyeColour());
 		}
 			
 		if(FelisCatus instanceof Carnivora) {
 			System.out.println("Family: Felidae\n");
-			System.out.println("Species: " + speciesB + "\nColour: " + colourB + "\n");
 		}
-		if(CrocutaCrocuta instanceof Carnivora) {
-			System.out.println("Family: Hyaenidae\n");
-			System.out.println("Region: " + regionC + "\nSpecies: " + speciesC + "\n");
-		}
+	}
+
+	private static void introducerExtension(Carnivora Animalia) {
+		System.out.println("Name: " + Animalia.name + "\nWeight: " + Animalia.weight + "\nAge: " + Animalia.age + "\nSpecies: " + Animalia.species + "\n");
 	}
 }

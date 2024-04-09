@@ -1,35 +1,38 @@
 package inheritance;
 
 public class Felidae extends Carnivora {
-	private String speciesB, colourB;
+	private int jumpHeight, biteStrength;
 	
-	public Felidae(String speciesB, String colourB, String name, float weight, int age, int length) {
-		super(name, weight, age, length);
-		this.speciesB = speciesB;
-		this.colourB = colourB;
+	public Felidae(int jumpHeight, int biteStrength, String name, float weight, int age, String species) {
+		super(name, weight, age, species);
+		this.jumpHeight = jumpHeight;
+		this.biteStrength = biteStrength;
 	}
 	
 	public Felidae() {
-		
-	}
-
-	public String getSpeciesB() {
-		return speciesB;
-	}
-
-	public void setSpeciesB(String speciesB) {
-		this.speciesB = speciesB;
-	}
-
-	public String getColourB() {
-		return colourB;
-	}
-
-	public void setColourB(String colourB) {
-		this.colourB = colourB;
+		System.out.println("Enter jump height (cm): ");
+		jumpHeight = input.nextInt();
+		System.out.println("Enter bite strength (N•M, int): ");
+		biteStrength = input.nextInt(); 
 	}
 	
+	public int getJumpHeight() {
+		return jumpHeight;
+	}
+
+	public void setJumpHeight(int jumpHeight) {
+		this.jumpHeight = jumpHeight;
+	}
+
+	public int getBiteStrength() {
+		return biteStrength;
+	}
+
+	public void setBiteStrength(int biteStrength) {
+		this.biteStrength = biteStrength;
+	}
+
 	public static void main(String[] args) {
-		
+		Felidae Felis = new Felinae();
 	}
 }
