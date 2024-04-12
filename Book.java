@@ -1,5 +1,6 @@
 package inheritance;
 
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Book implements Comparable<Book> {
@@ -17,25 +18,56 @@ public class Book implements Comparable<Book> {
 		this.year = year;
 	}
 	
-	public Book() {
-		System.out.println("Enter book title: ");
-		title = input.nextLine();
-		System.out.println("Enter Author: ");
-		author = input.nextLine();
-		input.nextLine();
-		System.out.println("Enter issue #: ");
-		issueNumber = input.nextInt();
-		System.out.println("Enter pubish month: ");
-		month = input.nextInt();
-		System.out.println("Enter publish day: ");
-		day = input.nextInt();
-		System.out.println("Enter publish year: ");
-		year = input.nextInt();
-	}
-
-	@Override
 	public int compareTo(Book o) {
-		
-		return 0;
+		return this.title.compareTo(o.title);
 	}
+	
+	static final Comparator<Book> NAME_ORDER = new Comparator<Book>() {
+		public int compare(Book a, Book b) {
+			return a.title.compareTo(b.title);
+		}
+	};
+	
+	//in form MM/DD/YYYY
+	static final Comparator<Book> PUBLISH_MONTH = new Comparator<Book>() {
+		public int compare(Book a, Book b) {
+			if(a.month < b.month) {
+				return -1;
+			}
+			else if(a.month > b.month) {
+				return 1;
+			}
+			else {
+				return 0;
+			}
+		}
+	};
+	
+	static final Comparator<Book> PUBLISH_DAY = new Comparator<Book>() {
+		public int compare(Book a, Book b) {
+			if(a.day < b.day) {
+				return -1;
+			}
+			else if(a.day > b.day) {
+				return 1;
+			}
+			else {
+				return 0;
+			}
+		}
+	};
+	
+	static final Comparator<Book> PUBLISH_YEAR = new Comparator<Book>() {
+		public int compare(Book a, Book b) {
+			if(a.year < b.year) {
+				return -1;
+			}
+			else if(a.year > b.year) {
+				return 1;
+			}
+			else {
+				return 0;
+			}
+		}
+	};
 }
