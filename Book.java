@@ -18,6 +18,54 @@ public class Book implements Comparable<Book> {
 		this.year = year;
 	}
 	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public int getIssueNumber() {
+		return issueNumber;
+	}
+
+	public void setIssueNumber(int issueNumber) {
+		this.issueNumber = issueNumber;
+	}
+
+	public int getMonth() {
+		return month;
+	}
+
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	public int getDay() {
+		return day;
+	}
+
+	public void setDay(int day) {
+		this.day = day;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
 	public int compareTo(Book o) {
 		return this.title.compareTo(o.title);
 	}
