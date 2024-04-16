@@ -10,13 +10,6 @@ public class Canidae extends Carnivora{
 		this.furLength = furLength;
 	}
 	
-	public Canidae() {
-		System.out.println("Enter eye colour: ");
-		eyeColour = input.nextLine();
-		System.out.println("Enter fur length (cm, int): ");
-		furLength = input.nextInt();
-	}
-	
 	public String getEyeColour() {
 		return eyeColour;
 	}

@@ -13,13 +13,6 @@ public class Canini extends Canidae{
 		this.tailLength = tailLength;
 	}
 	
-	public Canini() {
-		System.out.println("Enter ear type (floppy/pointy): ");
-		earType = input.nextLine();
-		System.out.println("Enter tailLength (long/short): ");
-		tailLength = input.nextLine();
-	}
-
 	public String getEarType() {
 		return earType;
 	}

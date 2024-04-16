@@ -9,13 +9,6 @@ public class Felinae extends Felidae {
 		this.colour = colour;
 	}
 	
-	public Felinae() {
-		System.out.println("Enter region: ");
-		region = input.nextLine();
-		System.out.println("Enter colour: ");
-		colour = input.nextLine();
-	}
-	
 	public String getRegion() {
 		return region;
 	}
