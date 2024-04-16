@@ -1,2 +1,3 @@
-.classpath
-.project
+#ignores and doesnt push the following file types
+*.classpath
+*.project
