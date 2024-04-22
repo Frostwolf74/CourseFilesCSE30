@@ -16,7 +16,8 @@ public class Food extends Meal {
 		this.temp = temp;
 	}
 	
+	@Override
 	public String toString() {
-		return "Temperature: " + temp + "Â°C";
+		return "Name: " + getFoodName() + "\nEnergy: " + getFoodEnergy() + "%" + "\nWeight: " + getFoodWeight() + " g" + "\nTemperature: " + getTemp() + "°C";
 	}
 }

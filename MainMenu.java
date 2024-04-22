@@ -7,10 +7,10 @@ public class MainMenu {
 	static Scanner input = new Scanner(System.in);
 
 	public static Meal printMenu() {
-		ArrayList<MainMenu> menu = new ArrayList<MainMenu>();
 		
-		menu.add(Meal food1 = new Food("food1", 20, 500, 72)); // name, percent, grams, celsius
-		Meal food2 = new Food("food2", 5, 100, 22);
+		
+		//menu.add(); 
+		
 		
 		System.out.println("Select an option by name:");
 		
