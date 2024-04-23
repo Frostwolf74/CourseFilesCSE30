@@ -18,6 +18,6 @@ public class Food extends Meal {
 	
 	@Override
 	public String toString() {
-		return "Name: " + getFoodName() + "\nEnergy: " + getFoodEnergy() + "%" + "\nWeight: " + getFoodWeight() + " g" + "\nTemperature: " + getTemp() + "°C";
+		return "Name: " + getFoodName() + "\nEnergy: " + getFoodEnergy() + "%" + "\nWeight: " + getFoodWeight() + " g" + "\nTemperature: " + getTemp() + "Â°C";
 	}
 }
