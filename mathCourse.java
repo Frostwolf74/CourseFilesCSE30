@@ -26,4 +26,8 @@ public class mathCourse extends Course {
 		this.textbook = textbook;
 	}
 	
+//	public Override addStudent(Student student) {
+//		
+//	}
+	
 }

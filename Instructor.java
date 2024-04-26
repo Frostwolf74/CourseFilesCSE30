@@ -1,5 +1,7 @@
 package CourseManagement;
 
+import java.util.ArrayList;
+
 public class Instructor {
 	private String name, email, hours;
 	
@@ -7,10 +9,6 @@ public class Instructor {
 		this.name = name;
 		this.email = email;
 		this.hours = hours;
-	}
-	
-	public void addInstructor(Instructor instructor) {
-		
 	}
 	
 	public String getName() {

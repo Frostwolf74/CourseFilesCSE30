@@ -1,17 +1,30 @@
 package CourseManagement;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Student {
 	private String name, major;
 	private int ID;
-	private int[] completedCourses;
+	private int[] completedCourses;	
+	private ArrayList<Student> courses = new ArrayList<Student>(); // courses the student has
+	static Scanner input = new Scanner(System.in);
 	
 	public Student(String name, String major, int ID, int[] completedCourses) {
 		this.name = name;
 		this.major = major;
 		this.ID = ID;
 		this.completedCourses = completedCourses;
+	}
+	
+	public Student() { // manage student
+		System.out.println("Select an option: 1. Register course");
+		int inputOption = input.nextInt();
+		
+		switch (inputOption) {
+		case 1:
+			regCourse(student.name);
+		}
 	}
 
 	public String getName() {
@@ -51,9 +64,8 @@ public class Student {
 		return grade;
 	}
 	
-	public void regCourse(Student student) {
-		
-//		Course.addStudent(this);
+	public void regCourse(Student student, Course course) {
+		course.addStudent(student);
 	}
 	
 	public static void main(String[] args) {
