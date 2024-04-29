@@ -8,8 +8,7 @@ public class Course {
 	private int courseID;
 	private String courseName;
 	private int[] req = new int[20]; // contains courseIDs
-	private ArrayList<Instructor> instructors = new ArrayList<Instructor>(); // instructors in the course
-	private ArrayList<Student> students = new ArrayList<Student>(); // students in the course
+	//private ArrayList<Instructor> instructors = new ArrayList<Instructor>(); // instructors in the course
 	static Scanner input = new Scanner(System.in);
 	
 	public Course(int courseID, String courseName, int[] req) {
@@ -40,18 +39,6 @@ public class Course {
 
 	public int[] getReq() {
 		return req;
-	}
-	
-	public void addStudent(Student student) {
-		System.out.println("Enter selected course ID");
-		int CourseID = input.nextInt();
-		students.add(CourseID, student);
-	}
-	
-	public void removeStudent(Student student) {
-		System.out.println("Enter selected course ID");
-		int CourseID = input.nextInt();
-		students.remove(student);
 	}
 
 	public void setReq(int[] req) {
