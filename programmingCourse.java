@@ -3,12 +3,14 @@ package CourseManagement;
 import java.util.ArrayList;
 
 public class programmingCourse extends Course {
+	private int level;
 	private String language;
-	static ArrayList<Student> students = new ArrayList<Student>(); // students in the course
+	 private ArrayList<Student> students = new ArrayList<Student>(); // students in this course
 	
 	public programmingCourse(int courseID, String courseName, int[] req, String language) {
 		super(courseID, courseName, req);
 		this.language = language;
+		this.level = level;
 	}
 
 	public String getLanguage() {
@@ -19,15 +21,27 @@ public class programmingCourse extends Course {
 		this.language = language;
 	}
 	
-	public static void addStudent(Student student) { // FIXME
-		students.add(student);
+	public void addStudent(Student student) {
+		//boolean check = reqCheck(student);
+		
+		if(check) {
+			students.add(student);
+		}
+		else {
+			System.out.println("This student is missing the required prerequisites to enter this course");
+		}
 	}
 	
-	public static void removeStudent(Student student) { // FIXME
+	public void removeStudent(Student student) { 
 		students.remove(student);
 	}
 	
-//	public Override addStudent(Student student) {
-//	
-//}
+	public boolean reqCheck(Student student) {
+		for(int i = 1; i < student.getAllCourses().size()+1; ++i) {
+			if(student.getCourses(i) == 1) {
+				
+			}
+		}
+		
+	}
 }

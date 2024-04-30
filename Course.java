@@ -44,4 +44,42 @@ public class Course {
 	public void setReq(int[] req) {
 		this.req = req;
 	}
+	
+	public static void addStudent(Student student) {  
+		System.out.println("Select a course: \n1. Computer Science 1\n2. Computer Science 2\n3. Math 1\n4. Math 2");
+		int selectionCourse = input.nextInt();
+		
+		switch(selectionCourse) {
+		case 1:
+			programmingCourse.addStudent(student);
+			break;
+		case 2:
+			programmingCourse.addStudent(student);
+			break;
+		case 3:
+			mathCourse.addStudent(student);
+			break;
+		case 4:
+			mathCourse.addStudent(student);
+		}
+	}
+	
+	public static void removeStudent(Student student) { 
+		System.out.println("Select a course: \n1. Computer Science 1\n2. Computer Science 2\n3. Math 1\n4. Math 2");
+		int selectionCourse = input.nextInt();
+		
+		switch(selectionCourse) {
+		case 1:
+			programmingCourse.removeStudent(student);
+			break;
+		case 2:
+			programmingCourse.removeStudent(student);
+			break;
+		case 3:
+			mathCourse.removeStudent(student);
+			break;
+		case 4:
+			mathCourse.removeStudent(student);
+		}
+	}
 }

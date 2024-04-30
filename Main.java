@@ -14,49 +14,36 @@ public class Main {
 		int[] CSE2PreReqs = {1,2,3};
 		int[] math1PreReqs = {1};
 		int[] math2PreReqs = {1,2};
-		programmingCourse CSE1 = new programmingCourse(0, "CSE-1", CSE1PreReqs, "C++"); // int courseID, String courseName, int[] req, String language
-		programmingCourse CSE2 = new programmingCourse(1, "CSE-2", CSE2PreReqs, "JavaScript"); 
-		mathCourse math1 = new mathCourse(10, "Math-1", math1PreReqs, 1, "math1Textbook"); // ^, ^, ^, int level, String textbook
-		mathCourse math2 = new mathCourse(11, "Math-2", math2PreReqs, 2, "math2Textbook");
+		programmingCourse CSE1 = new programmingCourse(1, "CSE-1", CSE1PreReqs, "C++"); // int courseID, String courseName, int[] req, String language
+		programmingCourse CSE2 = new programmingCourse(2, "CSE-2", CSE2PreReqs, "JavaScript"); 
+		mathCourse math1 = new mathCourse(1, "Math-1", math1PreReqs, 1, "math1Textbook"); // ^, ^, ^, int level, String textbook
+		mathCourse math2 = new mathCourse(2, "Math-2", math2PreReqs, 2, "math2Textbook");
 		
-		System.out.println("Select a student: ");
-		System.out.println("1. Student 1\n2. Student 2");
+		System.out.println("Select an option: 1. Add a student to a course\n2. Remove a student from a course");
+		int selectionMain = input.nextInt();
+		
+		System.out.println("Select a student: \n1. Student 1 \n2. Student 2");
 		int selectionStudent = input.nextInt();
-		System.out.println("Select a course: ");
-		System.out.println("1. Computer Science 1\n2. Computer Science 2\n3. Math 1\n4. Math 2");
-		int selectionCourse = input.nextInt();		
-		
-		Student selectedStudent; // placeholders
-		Course selectedCourse;
 		
 		switch(selectionStudent) {
 		case 1:
-			selectedStudent = student1;
+			if(selectionMain == 1) {
+				CSE1.addStudent(student1);
+			}
+			else if(selectionMain == 2) {
+				Course.removeStudent(student1);
+			}
 			break;
 		case 2:
-			selectedStudent = student2;
+			if(selectionMain == 1) {
+				Course.addStudent(student2);
+			}
+			else if(selectionMain == 2) {
+				Course.removeStudent(student2);
+			}
 			break;
 		default:
 			break;	
 		}
-		
-		switch(selectionCourse) {
-		case 1:
-			selectedCourse = CSE1;
-			break;
-		case 2:
-			selectedCourse = CSE2;
-			break;
-		case 3:
-			selectedCourse = math1;
-			break;
-		case 4:
-			selectedCourse = math2;
-		}
-		
-		Student.manage
-		
-		//student1.regCourse(student1, CSE1);
-//		instructor1.regCourse(instructor1, CSE1);
 	}
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class mathCourse extends Course {
 	private int level;
 	private String textbook;
-	static ArrayList<Student> students = new ArrayList<Student>(); // students in the course
+	static ArrayList<Student> students = new ArrayList<Student>(); // students in this course
 	
 	public mathCourse(int courseID, String courseName, int[] req, int level, String textbook) {
 		super(courseID, courseName, req);
@@ -28,17 +28,12 @@ public class mathCourse extends Course {
 	public void setTextbook(String textbook) {
 		this.textbook = textbook;
 	}
-	
-	public static void addStudent(Student student) { // FIXME
+	 
+	public static void addStudent(Student student) { 
 		students.add(student);
 	}
 	
-	public static void removeStudent(Student student) { // FIXME
+	public static void removeStudent(Student student) { 
 		students.remove(student);
-	}
-	
-//	public Override addStudent(Student student) {
-//		
-//	}
-	
+	}	
 }

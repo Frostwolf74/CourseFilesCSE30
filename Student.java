@@ -10,25 +10,11 @@ public class Student {
 	private ArrayList<Student> courses = new ArrayList<Student>(); // courses the student has
 	static Scanner input = new Scanner(System.in);
 	
-	public Student(String name, String major, int ID) {
+	public Student(String name, String major, int ID, ArrayList<Student> courses) {
 		this.name = name;
 		this.major = major;
 		this.ID = ID;
-	}
-	
-	public void manage(Student student, Course course) { // manage student
-		System.out.println("Select an option: 1. Register course\n2. Remove course");
-		int inputOption = input.nextInt();
-		System.out.println("Enter course ID: ");
-		int courseIDInput = input.nextInt();
-		
-		switch (inputOption) {
-		case 1:		
-			Course.addStudent(student, course); // FIXME 
-			break;
-		case 2:
-			Course.removeStudent(student, course); // FIXME
-		}
+		this.courses = courses;
 	}
 
 	public String getName() {
@@ -60,8 +46,17 @@ public class Student {
 		return grade;
 	}
 	
-	public static void main(String[] args) {
-		ArrayList<Student> courses = new ArrayList<Student>();
-		
+	public ArrayList<Student> getAllCourses() {
+		return courses;
 	}
+	
+	public Student getCourses(int course) {
+		return courses.get(course);
+	}
+	
+	public void setCourses(ArrayList<Student> courses) {
+		this.courses = courses;
+	}
+	
+
 }
