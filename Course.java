@@ -8,7 +8,6 @@ public class Course {
 	private int courseID;
 	private String courseName;
 	private int[] req = new int[20]; // contains courseIDs
-	//private ArrayList<Instructor> instructors = new ArrayList<Instructor>(); // instructors in the course
 	static Scanner input = new Scanner(System.in);
 	
 	public Course(int courseID, String courseName, int[] req) {
@@ -44,42 +43,50 @@ public class Course {
 	public void setReq(int[] req) {
 		this.req = req;
 	}
-	
-	public static void addStudent(Student student) {  
-		System.out.println("Select a course: \n1. Computer Science 1\n2. Computer Science 2\n3. Math 1\n4. Math 2");
-		int selectionCourse = input.nextInt();
+
+	public void addStudent(Student selectedStudent) {
 		
-		switch(selectionCourse) {
-		case 1:
-			programmingCourse.addStudent(student);
-			break;
-		case 2:
-			programmingCourse.addStudent(student);
-			break;
-		case 3:
-			mathCourse.addStudent(student);
-			break;
-		case 4:
-			mathCourse.addStudent(student);
-		}
+	}
+
+	public void removeStudent(Student selectedStudent) {
+		
 	}
 	
-	public static void removeStudent(Student student) { 
-		System.out.println("Select a course: \n1. Computer Science 1\n2. Computer Science 2\n3. Math 1\n4. Math 2");
-		int selectionCourse = input.nextInt();
-		
-		switch(selectionCourse) {
-		case 1:
-			programmingCourse.removeStudent(student);
-			break;
-		case 2:
-			programmingCourse.removeStudent(student);
-			break;
-		case 3:
-			mathCourse.removeStudent(student);
-			break;
-		case 4:
-			mathCourse.removeStudent(student);
-		}
-	}
+//	public void addStudent(Student student) {  // FIXME refactor
+//		
+//		int selectionCourse = input.nextInt();
+//		
+//		switch(selectionCourse) {
+//		case 1:
+//			.addStudent(student);
+//			break;
+//		case 2:
+//			programmingCourse.addStudent(student);
+//			break;
+//		case 3:
+//			mathCourse.addStudent(student);
+//			break;
+//		case 4:
+//			mathCourse.addStudent(student);
+//		}
+//	}
+	
+//	public void removeStudent(Student student) { 
+//		System.out.println("Select a course: \n1. Computer Science 1\n2. Computer Science 2\n3. Math 1\n4. Math 2");
+//		int selectionCourse = input.nextInt();
+//		
+//		switch(selectionCourse) {
+//		case 1:
+//			programmingCourse.removeStudent(student);
+//			break;
+//		case 2:
+//			programmingCourse.removeStudent(student);
+//			break;
+//		case 3:
+//			mathCourse.removeStudent(student);
+//			break;
+//		case 4:
+//			mathCourse.removeStudent(student);
+//		}
+//	}
 }

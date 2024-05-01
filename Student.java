@@ -6,15 +6,16 @@ import java.util.Scanner;
 public class Student {
 	private String name, major;
 	private int ID;
-	//private int[] completedCourses; // merged with arraylist courses
+	private int[] completedCourses; // merged with arraylist courses
 	private ArrayList<Student> courses = new ArrayList<Student>(); // courses the student has
 	static Scanner input = new Scanner(System.in);
 	
-	public Student(String name, String major, int ID, ArrayList<Student> courses) {
+	public Student(int[] completedCourses, String name, String major, int ID) {
 		this.name = name;
 		this.major = major;
 		this.ID = ID;
 		this.courses = courses;
+		this.completedCourses = completedCourses;
 	}
 
 	public String getName() {
@@ -50,8 +51,22 @@ public class Student {
 		return courses;
 	}
 	
-	public Student getCourses(int course) {
-		return courses.get(course);
+	public boolean reqCheck(Student student, Course course) {
+		int k=0;
+		for(int i = 0; i < completedCourses.length; ++i) {
+			for(int j = 0; j < Main.getSelectedCourse().getReq().length; ++j) {
+				if(completedCourses[i] == Main.getSelectedCourse().getReq()[j]) {
+					++k;
+				}
+			}
+		}
+		
+		if(k >= Main.getSelectedCourse().getReq().length) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 	
 	public void setCourses(ArrayList<Student> courses) {

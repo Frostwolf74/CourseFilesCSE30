@@ -29,11 +29,11 @@ public class mathCourse extends Course {
 		this.textbook = textbook;
 	}
 	 
-	public static void addStudent(Student student) { 
+	public void addStudent(Student student) { 
 		students.add(student);
 	}
 	
-	public static void removeStudent(Student student) { 
+	public void removeStudent(Student student) { 
 		students.remove(student);
 	}	
 }

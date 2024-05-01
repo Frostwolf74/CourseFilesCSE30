@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class programmingCourse extends Course {
 	private int level;
 	private String language;
-	 private ArrayList<Student> students = new ArrayList<Student>(); // students in this course
+	private ArrayList<Student> students = new ArrayList<Student>(); // students in this course
 	
 	public programmingCourse(int courseID, String courseName, int[] req, String language) {
 		super(courseID, courseName, req);
@@ -22,26 +22,16 @@ public class programmingCourse extends Course {
 	}
 	
 	public void addStudent(Student student) {
-		//boolean check = reqCheck(student);
-		
-		if(check) {
+		if(student.reqCheck(student, Main.getSelectedCourse())) { // returns true if pre reqs are met 
 			students.add(student);
+			System.out.println("Student has been added to the course");
 		}
 		else {
-			System.out.println("This student is missing the required prerequisites to enter this course");
+			System.out.println("Student is missing the required prerequisites to enter this course");
 		}
 	}
 	
 	public void removeStudent(Student student) { 
 		students.remove(student);
-	}
-	
-	public boolean reqCheck(Student student) {
-		for(int i = 1; i < student.getAllCourses().size()+1; ++i) {
-			if(student.getCourses(i) == 1) {
-				
-			}
-		}
-		
 	}
 }
