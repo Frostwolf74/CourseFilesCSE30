@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Course {
-	private int courseID;
+	private int courseID, maxEnrollement;
+	private float requiredGPA;
 	private String courseName;
 	private int[] req = new int[20]; // contains courseIDs
 	static Scanner input = new Scanner(System.in);
