@@ -8,10 +8,10 @@ public class Course {
 	private int courseID, maxEnrollment;
 	private double requiredGPA;
 	private String courseName;
-	private int[] req = new int[20]; // contains courseIDs
+	private ArrayList<Course> req = new ArrayList<Course>(); // contains courseIDs
 	static Scanner input = new Scanner(System.in);
 	
-	public Course(int courseID, String courseName, int[] req, int maxEnrollment, double requiredGPA) {
+	public Course(int courseID, String courseName, ArrayList<Course> req, int maxEnrollment, double requiredGPA) {
 		this.courseID = courseID;
 		this.courseName = courseName;
 		this.req = req;
@@ -39,11 +39,11 @@ public class Course {
 	}
 
 
-	public int[] getReq() {
+	public ArrayList<Course> getReq() {
 		return req;
 	}
 
-	public void setReq(int[] req) {
+	public void setReq(ArrayList<Course> req) {
 		this.req = req;
 	}
 
@@ -54,42 +54,4 @@ public class Course {
 	public void removeStudent(Student selectedStudent) {
 		
 	}
-	
-//	public void addStudent(Student student) {  // FIXME refactor
-//		
-//		int selectionCourse = input.nextInt();
-//		
-//		switch(selectionCourse) {
-//		case 1:
-//			.addStudent(student);
-//			break;
-//		case 2:
-//			programmingCourse.addStudent(student);
-//			break;
-//		case 3:
-//			mathCourse.addStudent(student);
-//			break;
-//		case 4:
-//			mathCourse.addStudent(student);
-//		}
-//	}
-	
-//	public void removeStudent(Student student) { 
-//		System.out.println("Select a course: \n1. Computer Science 1\n2. Computer Science 2\n3. Math 1\n4. Math 2");
-//		int selectionCourse = input.nextInt();
-//		
-//		switch(selectionCourse) {
-//		case 1:
-//			programmingCourse.removeStudent(student);
-//			break;
-//		case 2:
-//			programmingCourse.removeStudent(student);
-//			break;
-//		case 3:
-//			mathCourse.removeStudent(student);
-//			break;
-//		case 4:
-//			mathCourse.removeStudent(student);
-//		}
-//	}
 }

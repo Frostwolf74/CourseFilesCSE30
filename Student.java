@@ -6,16 +6,14 @@ import java.util.Scanner;
 public class Student {
 	private String name, major;
 	private int ID;
-	private int[] completedCourses; // merged with arraylist courses
-	private ArrayList<Student> courses = new ArrayList<Student>(); // courses the student has
+	private ArrayList<Course> courses = new ArrayList<Course>(); // courses the student has
 	static Scanner input = new Scanner(System.in);
 	
-	public Student(int[] completedCourses, String name, String major, int ID) {
+	public Student(ArrayList<Student> courses, String name, String major, int ID) {
 		this.name = name;
 		this.major = major;
 		this.ID = ID;
 		this.courses = courses;
-		this.completedCourses = completedCourses;
 	}
 
 	public String getName() {
@@ -47,21 +45,21 @@ public class Student {
 		return grade;
 	}
 	
-	public ArrayList<Student> getAllCourses() {
+	public ArrayList<Course> getAllCourses() {
 		return courses;
 	}
 	
-	public boolean reqCheck(Student student, Course course) {
+	public boolean reqCheck(Course[] course) {
 		int k=0;
-		for(int i = 0; i < completedCourses.length; ++i) {
-			for(int j = 0; j < Main.getSelectedCourse().getReq().length; ++j) {
-				if(completedCourses[i] == Main.getSelectedCourse().getReq()[j]) {
+		for(int i = 0; i < courses.size(); ++i) {
+			for(int j = 0; j < course.length; ++j) {
+				if(courses.get(i) == course[j]) {
 					++k;
 				}
 			}
 		}
 		
-		if(k >= Main.getSelectedCourse().getReq().length) {
+		if(k >= course.length) {
 			return true;
 		}
 		else {
@@ -69,7 +67,7 @@ public class Student {
 		}
 	}
 	
-	public void setCourses(ArrayList<Student> courses) {
+	public void setCourses(Course[] courses) {
 		this.courses = courses;
 	}
 	

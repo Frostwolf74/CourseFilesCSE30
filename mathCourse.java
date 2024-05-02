@@ -5,9 +5,9 @@ import java.util.ArrayList;
 public class mathCourse extends Course {
 	private int level;
 	private String textbook;
-	static ArrayList<Student> students = new ArrayList<Student>(); // students in this course
+	private ArrayList<Course> students = new ArrayList<Course>(); // students in this course
 	
-	public mathCourse(int courseID, String courseName, int[] req, int level, String textbook, int maxEnrollment, double requiredGPA) {
+	public mathCourse(int courseID, String courseName, ArrayList<Course> req, int level, String textbook, int maxEnrollment, double requiredGPA) {
 		super(courseID, courseName, req, maxEnrollment, requiredGPA);
 		this.level = level;
 		this.textbook = textbook;
@@ -30,8 +30,7 @@ public class mathCourse extends Course {
 	}
 	 
 	public void addStudent(Student student) { 
-		if(student.reqCheck(student, Main.getSelectedCourse())) { // returns true if pre reqs are met 
-			students.add(student);
+		if(student.reqCheck(student, Main.getSelectedCourse())) { // TODO 
 			System.out.println("Student has been added to the course");
 		}
 		else {
