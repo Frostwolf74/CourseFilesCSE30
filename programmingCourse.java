@@ -7,8 +7,8 @@ public class programmingCourse extends Course {
 	private String language;
 	private ArrayList<Student> students = new ArrayList<Student>(); // students in this course
 	
-	public programmingCourse(int courseID, String courseName, int[] req, String language) {
-		super(courseID, courseName, req);
+	public programmingCourse(int courseID, String courseName, int[] req, String language, int maxEnrollment, double requiredGPA) {
+		super(courseID, courseName, req, maxEnrollment, requiredGPA);
 		this.language = language;
 		this.level = level;
 	}
@@ -33,5 +33,6 @@ public class programmingCourse extends Course {
 	
 	public void removeStudent(Student student) { 
 		students.remove(student);
+		System.out.println("Student has been removed from the course");
 	}
 }

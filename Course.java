@@ -5,16 +5,18 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Course {
-	private int courseID, maxEnrollement;
-	private float requiredGPA;
+	private int courseID, maxEnrollment;
+	private double requiredGPA;
 	private String courseName;
 	private int[] req = new int[20]; // contains courseIDs
 	static Scanner input = new Scanner(System.in);
 	
-	public Course(int courseID, String courseName, int[] req) {
+	public Course(int courseID, String courseName, int[] req, int maxEnrollment, double requiredGPA) {
 		this.courseID = courseID;
 		this.courseName = courseName;
 		this.req = req;
+		this.maxEnrollment = maxEnrollment;
+		this.requiredGPA = requiredGPA;
 	}
 	
 	public int getCourseID() {
