@@ -15,9 +15,14 @@ public class Main {
 		Instructor instructor1 = new Instructor("Instructor1", "Instructor1@domain.com", "9:00 to 17:00"); // String name, String email, String hours
 	
 		int[] CSE1PreReqs = {1,2};
+		float CSE1GPA = 2.5;
 		int[] CSE2PreReqs = {1,2,3};
+		float CSE2GPA = 3.0;
 		int[] math1PreReqs = {1};
+		float math1GPA = 2.0;
 		int[] math2PreReqs = {1,2};
+		float math2GPA = 2.7;
+		
 		programmingCourse CSE1 = new programmingCourse(1, "CSE-1", CSE1PreReqs, "C++"); // int courseID, String courseName, int[] req, String language
 		programmingCourse CSE2 = new programmingCourse(2, "CSE-2", CSE2PreReqs, "JavaScript"); 
 		mathCourse math1 = new mathCourse(1, "Math-1", math1PreReqs, 1, "math1Textbook"); // ^, ^, ^, int level, String textbook
