@@ -38,7 +38,6 @@ public class Course {
 		this.courseName = courseName;
 	}
 
-
 	public ArrayList<Course> getReq() {
 		return req;
 	}
@@ -47,11 +46,21 @@ public class Course {
 		this.req = req;
 	}
 
-	public void addStudent(Student selectedStudent) {
+	public boolean reqCheckCourse(ArrayList<Course> course) { // prereq check for course -> student
+		int k=0;
+		for(int i = 0; i < req.size(); ++i) {
+			for(int j = 0; j < course.size(); ++j) {
+				if(req.get(i) == course.get(j)) {
+					++k;
+				}
+			}
+		}
 		
-	}
-
-	public void removeStudent(Student selectedStudent) {
-		
+		if(k >= course.size()) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 }

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class mathCourse extends Course {
 	private int level;
 	private String textbook;
-	private ArrayList<Course> students = new ArrayList<Course>(); // students in this course
+	private ArrayList<Student> students = new ArrayList<Student>(); // students in this course
 	
 	public mathCourse(int courseID, String courseName, ArrayList<Course> req, int level, String textbook, int maxEnrollment, double requiredGPA) {
 		super(courseID, courseName, req, maxEnrollment, requiredGPA);
@@ -29,8 +29,9 @@ public class mathCourse extends Course {
 		this.textbook = textbook;
 	}
 	 
-	public void addStudent(Student student) { 
-		if(student.reqCheck(student, Main.getSelectedCourse())) { // TODO 
+	public void addStudent(Student student) { // use an entire student object and reference the variables from the object
+		if(student.reqCheck(this)) { // returns true if pre reqs are met 
+			students.add(student);
 			System.out.println("Student has been added to the course");
 		}
 		else {
@@ -41,5 +42,5 @@ public class mathCourse extends Course {
 	public void removeStudent(Student student) { 
 		students.remove(student);
 		System.out.println("Student has been removed from the course");
-	}	
+	}
 }

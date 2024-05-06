@@ -7,11 +7,7 @@ public class Main {
 	static Scanner input = new Scanner(System.in);
 	public static Course selectedCourse = null; // placeholder, initialised as null because java dumb
 	
-	public static void main(String[] args) {
-		// course prerequisite
-		
-		
-		// course object  
+	public static void main(String[] args) {	
 		ArrayList<Course> math1PreReqs = new ArrayList<Course>(); // TODO finish refactoring to use arraylists 
 		mathCourse math1 = new mathCourse(1, "Math-1", math1PreReqs, 1, "math1Textbook", 20, 2.0); // ^, ^, ^, int level, String textbook, int maxEnrollment, double requiredGPA
 		ArrayList<Course> math2PreReqs = new ArrayList<Course>();
@@ -20,13 +16,12 @@ public class Main {
 		ArrayList<Course> CSE1PreReqs = new ArrayList<Course>();
 		CSE1PreReqs.add(math1);
 		CSE1PreReqs.add(math2);
+		programmingCourse CSE1 = new programmingCourse(1, "CSE-1", CSE1PreReqs, "C++", 20, 2.5); // int courseID, String courseName, int[] req, String language, int maxEnrollment, double requiredGPA
 		ArrayList<Course> CSE2PreReqs = new ArrayList<Course>();
 		CSE2PreReqs.add(math1);
 		CSE2PreReqs.add(math2);
 		CSE2PreReqs.add(CSE1);
-		programmingCourse CSE1 = new programmingCourse(1, "CSE-1", CSE1PreReqs, "C++", 20, 2.5); // int courseID, String courseName, int[] req, String language, int maxEnrollment, double requiredGPA
 		programmingCourse CSE2 = new programmingCourse(2, "CSE-2", CSE2PreReqs, "JavaScript", 20, 3.0); 
-		// student prerequisite 
 		ArrayList<Course> student1PreReqs = new ArrayList<Course>();
 		student1PreReqs.add(CSE1);
 		student1PreReqs.add(CSE2);
@@ -34,7 +29,6 @@ public class Main {
 		ArrayList<Course> student2PreReqs = new ArrayList<Course>();
 		student1PreReqs.add(math1);
 		
-		// student object 
 		Student student1 = new Student(student1PreReqs, "student1", "Computer Science", 1); // String name, String major, int ID, int[] completedCourses
 		Student student2 = new Student(student2PreReqs, "student2", "Mathematics", 2);
 		Instructor instructor1 = new Instructor("Instructor1", "Instructor1@domain.com", "9:00 to 17:00"); // String name, String email, String hours
@@ -63,6 +57,7 @@ public class Main {
 			switch(selectionMain) {
 			case 1: 
 				CSE1.addStudent(selectedStudent); // go into the course object and add the student
+				selectedStudent.addCourse(CSE1); // go into the student object and add the course
 				break;
 			case 2: 
 				CSE1.removeStudent(selectedStudent); // vice versa 
