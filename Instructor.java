@@ -2,8 +2,9 @@ package CourseManagement;
 
 import java.util.ArrayList;
 
-public class Instructor {
+public class Instructor { // TODO complete
 	private String name, email, hours;
+	private ArrayList<Course> courses = new ArrayList<Course>(); // courses the instructor has
 	
 	public Instructor(String name, String email, String hours) {
 		this.name = name;
@@ -34,8 +35,14 @@ public class Instructor {
 	public void setHours(String hours) {
 		this.hours = hours;
 	}
-
-	public static void main(String[] args) {		
-		
+	
+	public void addCourse(Course course) {
+		if(course.reqCheckCourse(getCourses())) {
+			System.out.println("Course has been added to the student");
+		}
+	}
+	
+	public void removeCourse(Course course) {
+		courses.remove(course);
 	}
 }
