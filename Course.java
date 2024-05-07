@@ -1,7 +1,6 @@
 package CourseManagement;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Course {
@@ -15,8 +14,8 @@ public class Course {
 		this.courseID = courseID;
 		this.courseName = courseName;
 		this.req = req;
-		this.maxEnrollment = maxEnrollment;
-		this.requiredGPA = requiredGPA;
+		this.setMaxEnrollment(maxEnrollment);
+		this.setRequiredGPA(requiredGPA);
 	}
 	
 	public int getCourseID() {
@@ -45,7 +44,7 @@ public class Course {
 	public void setReq(ArrayList<Course> req) {
 		this.req = req;
 	}
-
+	
 	public boolean reqCheckCourse(ArrayList<Course> course) { // prereq check for course -> student
 		int k=0;
 		for(int i = 0; i < req.size(); ++i) {
@@ -62,5 +61,21 @@ public class Course {
 		else {
 			return false;
 		}
+	}
+
+	public int getMaxEnrollment() {
+		return maxEnrollment;
+	}
+
+	public void setMaxEnrollment(int maxEnrollment) {
+		this.maxEnrollment = maxEnrollment;
+	}
+
+	public double getRequiredGPA() {
+		return requiredGPA;
+	}
+
+	public void setRequiredGPA(double requiredGPA) {
+		this.requiredGPA = requiredGPA;
 	}
 }

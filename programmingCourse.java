@@ -6,11 +6,13 @@ public class programmingCourse extends Course {
 	private int level;
 	private String language;
 	private ArrayList<Student> students = new ArrayList<Student>(); // students in this course
+	private Instructor instructor; // only one instructor per course
 	
-	public programmingCourse(int courseID, String courseName, ArrayList<Course> req, String language, int maxEnrollment, double requiredGPA) {
+	public programmingCourse(int courseID, String courseName, ArrayList<Course> req, String language, int maxEnrollment, double requiredGPA, Instructor instructor) {
 		super(courseID, courseName, req, maxEnrollment, requiredGPA);
 		this.language = language;
 		this.level = level;
+		this.instructor = instructor;
 	}
 
 	public String getLanguage() {
@@ -33,10 +35,6 @@ public class programmingCourse extends Course {
 		return students;
 	}
 
-	public void setStudents(ArrayList<Student> students) {
-		this.students = students;
-	}
-
 	public void addStudent(Student student) { // use an entire student object and reference the variables from the object
 		if(student.reqCheck(this)) { // returns true if pre reqs are met 
 			students.add(student);
@@ -50,5 +48,13 @@ public class programmingCourse extends Course {
 	public void removeStudent(Student student) { 
 		students.remove(student);
 		System.out.println("Student has been removed from the course");
+	}
+
+	public Instructor getInstructor() {
+		return instructor;
+	}
+
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
 	}
 }

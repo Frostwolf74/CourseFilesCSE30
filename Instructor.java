@@ -36,10 +36,12 @@ public class Instructor { // TODO complete
 		this.hours = hours;
 	}
 	
+	public ArrayList<Course> getCourses() {
+		return courses;
+	}
+	
 	public void addCourse(Course course) {
-		if(course.reqCheckCourse(getCourses())) {
-			System.out.println("Course has been added to the student");
-		}
+		courses.add(course);
 	}
 	
 	public void removeCourse(Course course) {

@@ -6,14 +6,16 @@ import java.util.Scanner;
 public class Student {
 	private String name, major;
 	private int ID;
+	private double GPA;
 	private ArrayList<Course> courses = new ArrayList<Course>(); // courses the student has
 	static Scanner input = new Scanner(System.in);
 	
-	public Student(ArrayList<Course> student1PreReqs, String name, String major, int ID) {
+	public Student(ArrayList<Course> student1PreReqs, String name, String major, int ID, double GPA) {
 		this.name = name;
 		this.major = major;
 		this.ID = ID;
 		this.courses = student1PreReqs;
+		this.GPA = GPA;
 	}
 
 	public String getName() {
@@ -40,9 +42,8 @@ public class Student {
 		ID = iD;
 	}
 	
-	public float getGPA(float grade) {
-		grade = 4 * (grade / 100);
-		return grade;
+	public double getGPA() {
+		return GPA;
 	}
 	
 	public ArrayList<Course> getCourses() {

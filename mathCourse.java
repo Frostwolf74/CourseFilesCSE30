@@ -6,11 +6,13 @@ public class mathCourse extends Course {
 	private int level;
 	private String textbook;
 	private ArrayList<Student> students = new ArrayList<Student>(); // students in this course
+	private Instructor instructor;
 	
-	public mathCourse(int courseID, String courseName, ArrayList<Course> req, int level, String textbook, int maxEnrollment, double requiredGPA) {
+	public mathCourse(int courseID, String courseName, ArrayList<Course> req, int level, String textbook, int maxEnrollment, double requiredGPA, Instructor instructor) {
 		super(courseID, courseName, req, maxEnrollment, requiredGPA);
 		this.level = level;
 		this.textbook = textbook;
+		this.instructor = instructor;
 	}
 
 	public int getLevel() {
@@ -42,5 +44,13 @@ public class mathCourse extends Course {
 	public void removeStudent(Student student) { 
 		students.remove(student);
 		System.out.println("Student has been removed from the course");
+	}
+
+	public Instructor getInstructor() {
+		return instructor;
+	}
+
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
 	}
 }
