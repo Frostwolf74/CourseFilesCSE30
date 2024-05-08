@@ -10,7 +10,7 @@ public class Main {
 	static ArrayList<Course> mainCourses = new ArrayList<Course>(); // all courses initialised in main
 	
 	public static void mainMenu() {
-		System.out.println("Select an option: \n1. Manage students\n2. Manage instructors\n3. View all courses");
+		System.out.println("Select an option: \n1. Manage students\n2. Manage instructors\n3. View all courses\n4. Leave");
 		int mainSelection = input.nextInt();
 		int selectionCourse = 0;
 		switch(mainSelection) {
@@ -19,11 +19,11 @@ public class Main {
 			int selection = input.nextInt();
 			
 			System.out.println("Select a student: \n1. Student 1 \n2. Student 2");
-			int selectionStudent = input.nextInt();
+			int selectionStudent = input.nextInt()-1;
 			
 			if(selection != 3) {
 				System.out.println("Select a course: \n1. Math 1\n2. Math 2\n3. Computer Science 1\n4. Computer Science 2");
-				selectionCourse = input.nextInt();
+				selectionCourse = input.nextInt()-1;
 			}
 			
 			manageStudent(selection, mainCourses.get(selectionCourse), mainStudents.get(selectionStudent)); // add or remove, selected course, selected student
@@ -44,23 +44,43 @@ public class Main {
 			break;
 		case 3:
 			for(int i = 0; i < mainCourses.size(); i++) {
-				System.out.println(
-					"Course Name: " + mainCourses.get(i).getCourseName() +
-					"\nCourse ID: " + mainCourses.get(i).getCourseID() +
-					"\nMaximum enrollment: " + mainCourses.get(i).getMaxEnrollment() +
-					"\nMinimum GPA: " + mainCourses.get(i).getRequiredGPA() +
-					"\nPrerequisites: " + mainCourses.get(i).getReq() 
-				);
+				mainCourses.get(i).printAll(i);
+			
+				if(mainCourses.get(i) instanceof programmingCourse) {
+					if(((programmingCourse) mainCourses.get(i)).getInstructor() != null) {
+						((programmingCourse) mainCourses.get(i)).printInstructor();
+					}
+					else {
+						System.out.println("There are no instructors assigned to this course");
+					}
+				}
+				if(mainCourses.get(i) instanceof mathCourse) {
+					if(((mathCourse) mainCourses.get(i)).getInstructor() != null) {
+						((mathCourse) mainCourses.get(i)).printInstructor();
+					}
+					else {
+						System.out.println("There are no instructors assigned to this course");
+					}
+				}
+				
+				System.out.println("--------------------------------------------\n");
 			}
+			mainMenu();
 			break;
+		case 4:
+			System.exit(0);
+			break;
+		default:
+			System.out.println("Invalid input");
+			mainMenu();
 		}
 	}
 	
 	public static void main(String[] args) {		
 		// courses guide: 1 = math1, 2 = math2, 3 = CSE1, 4 = CSE2
 	
-		mainInstructors.add(new Instructor("Instructor1", "Instructor1@domain.com", "9:00 to 17:00"));
-		mainInstructors.add(new Instructor("Instructor2", "Insturctor2@domain.com", "9:00 to 17:00"));
+		mainInstructors.add(new Instructor("Instructor 1", "Instructor1@domain.com", "9:00 to 17:00"));
+		mainInstructors.add(new Instructor("Instructor 2", "Insturctor2@domain.com", "9:00 to 17:00"));
 		
 		ArrayList<Course> student4PreReqs = new ArrayList<Course>();
 		
@@ -84,7 +104,8 @@ public class Main {
 		student1PreReqs.add(mainCourses.get(3));
 		student1PreReqs.add(mainCourses.get(0));
 		ArrayList<Course> student2PreReqs = new ArrayList<Course>();
-		student1PreReqs.add(mainCourses.get(0));
+		student2PreReqs.add(mainCourses.get(0));
+		student2PreReqs.add(mainCourses.get(1));
 		
 		mainStudents.add(new Student(student1PreReqs, "Student 1", "Computer Science", 1, 3.0));
 		mainStudents.add(new Student(student2PreReqs, "Student 2", "Mathematics", 2, 2.0));
@@ -96,33 +117,37 @@ public class Main {
 	
 	public static void manageStudent(int selection, Course selectedCourse, Student student) {		
 		switch(selection) {
-		case 1: 
+		case 1:  // add student to a course/add course to a student
 			if(selectedCourse instanceof mathCourse) {
 				((mathCourse) selectedCourse).addStudent(student); 
+				student.addCourse(selectedCourse);
 			}
 			else if(selectedCourse instanceof programmingCourse) {
 				((programmingCourse) selectedCourse).addStudent(student); 
+				student.addCourse(selectedCourse);
 			}
 			break;
-		case 2: 
+		case 2: // remove student from a course
 			if(selectedCourse instanceof mathCourse) {
 				((mathCourse) selectedCourse).removeStudent(student); 
+				student.removeCourse(selectedCourse);
 			}
 			else if(selectedCourse instanceof programmingCourse) {
 				((programmingCourse) selectedCourse).removeStudent(student); 
+				student.removeCourse(selectedCourse);
 			}
 			break;
-		case 3:
+		case 3: // print student information
 			System.out.println(
 					"Name: " + student.getName() +
 					"\nID: " + student.getID() +
 					"\nMajor: " + student.getMajor() +
 					"\nGPA: " + student.getGPA()
 			);
-			
+		
+			System.out.println("\nCourses:");
 			for(int i = 0; i < student.getCourses().size(); ++i) {
-				System.out.println("\nCourses: \n" + student.getCourses().get(i).getCourseName() + "\n");
-				System.out.println("\n");
+				System.out.println(student.getCourses().get(i).getCourseName());
 			}
 			
 			if(student.getCourses().size() == 0) {
@@ -159,13 +184,13 @@ public class Main {
 					"\nHours: " + instructor.getHours()
 			);
 			
+			System.out.println("\nCourses:");
 			for(int i = 0; i < instructor.getCourses().size(); ++i) {
-				System.out.println("\nCourses: \n" + instructor.getCourses().get(i).getCourseName() + "\n");
-				System.out.println("\n");
+				System.out.println(instructor.getCourses().get(i).getCourseName());
 			}
 			
 			if(instructor.getCourses().size() == 0) {
-				System.out.println("Instructor is not assigned to any courses");
+				System.out.println("Student is not enrolled in any courses");
 			}
 		}
 		System.out.println("\n");

@@ -78,4 +78,22 @@ public class Course {
 	public void setRequiredGPA(double requiredGPA) {
 		this.requiredGPA = requiredGPA;
 	}
+	
+	public void printAll(int i) {
+		System.out.println(
+				"Course Name: " + getCourseName() +
+				"\nCourse ID: " + getCourseID() +
+				"\nMaximum enrollment: " + getMaxEnrollment() +
+				"\nMinimum GPA: " + getRequiredGPA()
+		);
+		if(getReq().size() != 0) {
+			System.out.println("\nPrerequisites: ");
+			for(int j = 0; j < i; ++j) {
+				System.out.println(getReq().get(j).getCourseName());
+			}
+		}
+		else {
+			System.out.println("\nThere are no prerequisites for this course");
+		}
+	}
 }

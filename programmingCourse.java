@@ -46,12 +46,21 @@ public class programmingCourse extends Course {
 	}
 	
 	public void removeStudent(Student student) { 
-		students.remove(student);
-		System.out.println("Student has been removed from the course");
+		if(students.contains(student)) {
+			students.remove(student);
+			System.out.println("Student has been removed from the course");
+		}
+		else {
+			System.out.println("Student is not enrolled in this course");
+		}
 	}
 
 	public Instructor getInstructor() {
 		return instructor;
+	}
+	
+	public void printInstructor() {
+		System.out.println("\nAssigned instructor: \n" + getInstructor().getName());
 	}
 
 	public void setInstructor(Instructor instructor) {

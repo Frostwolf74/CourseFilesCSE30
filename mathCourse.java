@@ -31,7 +31,7 @@ public class mathCourse extends Course {
 		this.textbook = textbook;
 	}
 	 
-	public void addStudent(Student student) { // use an entire student object and reference the variables from the object
+	public void addStudent(Student student) {
 		if(student.reqCheck(this)) { // returns true if pre reqs are met 
 			students.add(student);
 			System.out.println("Student has been added to the course");
@@ -42,12 +42,21 @@ public class mathCourse extends Course {
 	}
 	
 	public void removeStudent(Student student) { 
-		students.remove(student);
-		System.out.println("Student has been removed from the course");
+		if(students.contains(student)) {
+			students.remove(student);
+			System.out.println("Student has been removed from the course");
+		}
+		else {
+			System.out.println("Student is not enrolled in this course");
+		}
 	}
 
 	public Instructor getInstructor() {
 		return instructor;
+	}
+	
+	public void printInstructor() {
+		System.out.println("\nAssigned instructor: \n" + getInstructor().getName());
 	}
 
 	public void setInstructor(Instructor instructor) {

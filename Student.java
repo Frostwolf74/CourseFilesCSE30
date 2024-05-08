@@ -54,8 +54,6 @@ public class Student {
 		this.courses = courses;
 	}
 	
-	// reminder: DO NOT SEND INDIVIDUAL OBJECT VARIABLES WITHOUT REFERENCING AN OBJECT FIRST
-	
 	public boolean reqCheck(Course chosenCourse) { // prereq check for the student -> course
 		int k=0;
 		for(int i = 0; i < courses.size(); ++i) {
@@ -66,10 +64,7 @@ public class Student {
 			}
 		}
 		
-		if(k < chosenCourse.getReq().size()) {
-			return false;
-		}
-		if(getGPA() >= chosenCourse.getRequiredGPA()) {
+		if(k >= chosenCourse.getReq().size()) {
 			return true;
 		}
 		else {
@@ -78,12 +73,12 @@ public class Student {
 	}
 	
 	public void addCourse(Course course) {
-		if(course.reqCheckCourse(getCourses())) {
-			System.out.println("Course has been added to the student");
-		}
+		courses.add(course);
+		System.out.println("Course has been added to the student"); // XXX debug
 	}
 	
 	public void removeCourse(Course course) {
 		courses.remove(course);
+		System.out.println("Course has been removed from the student"); // XXX debug
 	}
 }
