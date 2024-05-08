@@ -66,7 +66,10 @@ public class Student {
 			}
 		}
 		
-		if(k >= chosenCourse.getReq().size()) {
+		if(k < chosenCourse.getReq().size()) {
+			return false;
+		}
+		if(getGPA() >= chosenCourse.getRequiredGPA()) {
 			return true;
 		}
 		else {
