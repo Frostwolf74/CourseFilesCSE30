@@ -37,10 +37,6 @@ public class Student {
 	public int getID() {
 		return ID;
 	}
-
-	public void setID(int iD) {
-		ID = iD;
-	}
 	
 	public double getGPA() {
 		return GPA;
@@ -58,27 +54,26 @@ public class Student {
 		int k=0;
 		for(int i = 0; i < courses.size(); ++i) {
 			for(int j = 0; j < chosenCourse.getReq().size(); ++j) {
-				if(courses.get(i) == chosenCourse.getReq().get(j)) {
+				if(courses.get(i) == chosenCourse.getReq().get(j)) { // counts the amount of times a student course matches a course prerequisite
 					++k;
 				}
 			}
 		}
 		
-		if(k >= chosenCourse.getReq().size()) {
-			return true;
+		if(k >= chosenCourse.getReq().size()) { // checks if the student has all of the prerequisites
+			if(getGPA() >= chosenCourse.getRequiredGPA()) { // checks if the student has high enough GPA
+				return true;
+			}
 		}
-		else {
-			return false;
-		}
+		return false;
+
 	}
 	
 	public void addCourse(Course course) {
 		courses.add(course);
-		System.out.println("Course has been added to the student"); // XXX debug
 	}
 	
 	public void removeCourse(Course course) {
 		courses.remove(course);
-		System.out.println("Course has been removed from the student"); // XXX debug
 	}
 }

@@ -34,20 +34,21 @@ public class mathCourse extends Course {
 	public void addStudent(Student student) {
 		if(student.reqCheck(this)) { // returns true if pre reqs are met 
 			students.add(student);
-			System.out.println("Student has been added to the course");
+			System.out.printf("\u001b[32m" + "\n%s has been added to the course" + "\u001B[0m", student.getName());
+			student.addCourse(this);
 		}
 		else {
-			System.out.println("Student is missing the required prerequisites to enter this course");
+			System.out.printf("\u001B[31m" + "\n%s is missing the required prerequisites to enter this course" + "\u001B[0m", student.getName());
 		}
 	}
 	
 	public void removeStudent(Student student) { 
 		if(students.contains(student)) {
 			students.remove(student);
-			System.out.println("Student has been removed from the course");
+			System.out.printf("\n%s has been removed from the course", student.getName());
 		}
 		else {
-			System.out.println("Student is not enrolled in this course");
+			System.out.printf("\u001b[33m" + "\n%s is not enrolled in this course" + "\u001b[0m", student.getName());
 		}
 	}
 
