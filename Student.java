@@ -49,9 +49,9 @@ public class Student {
 	public void setCourses(ArrayList<Course> courses) {
 		this.courses = courses;
 	}
-	
-	public boolean reqCheck(Course chosenCourse) { // prereq check for the student -> course
-		int k=0;
+	// TODO implement max enrollment checks 
+	public int reqCheck(Course chosenCourse) { // prereq check for the student -> course
+		int k=0, returnCode;
 		for(int i = 0; i < courses.size(); ++i) {
 			for(int j = 0; j < chosenCourse.getReq().size(); ++j) {
 				if(courses.get(i) == chosenCourse.getReq().get(j)) { // counts the amount of times a student course matches a course prerequisite
@@ -60,12 +60,25 @@ public class Student {
 			}
 		}
 		
+		// error code guide: 1 = missing requirements, 2 = missing GPA, 3 = course is full
+		returnCode = 1;
 		if(k >= chosenCourse.getReq().size()) { // checks if the student has all of the prerequisites
+			returnCode = 2; // first check passed, returns if second check fails 
 			if(getGPA() >= chosenCourse.getRequiredGPA()) { // checks if the student has high enough GPA
-				return true;
+				returnCode = 3;
+				if(chosenCourse instanceof programmingCourse) { // checks if the course has enough space
+					if(((programmingCourse) chosenCourse).getStudents().size() < chosenCourse.getMaxEnrollment()) {
+						returnCode = -1; // all checks passed
+					}
+				}
+				else if(chosenCourse instanceof mathCourse) {
+					if(((mathCourse) chosenCourse).getStudents().size() < chosenCourse.getMaxEnrollment()) {
+						returnCode = -1;
+					}
+				}
 			}
 		}
-		return false;
+		return returnCode;
 
 	}
 	

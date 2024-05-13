@@ -62,9 +62,9 @@ public class Main {
 			
 			manageInstructor(selection, mainCourses.get(selectionCourse), mainInstructors.get(selectionInstructor));
 			break;
-		case 3:
+		case 3: // printing course info
 			for(int i = 0; i < mainCourses.size(); i++) {
-				mainCourses.get(i).printAll(i);
+				mainCourses.get(i).printAll(i); // i is the course index 
 			
 				if(mainCourses.get(i) instanceof programmingCourse) {
 					if(((programmingCourse) mainCourses.get(i)).getInstructor() != null) {
@@ -132,6 +132,10 @@ public class Main {
 		mainStudents.add(new Student(student2PreReqs, "Student 2", "Mathematics", 2, 2.0));
 		mainStudents.add(new Student(student2PreReqs, "Student 3", "Computer Science", 3, 4.0));
 		mainStudents.add(new Student(student2PreReqs, "Student 4", "None", 4, 1.0));
+		
+		for(int i = 0; i < 29; ++i) { // XXX debug to fill course with students
+			mainStudents.add(new Student(student1PreReqs, "Student" + i, "Computer Science", i+4, 3.0));
+		}
 	
 		mainMenu();
 	}

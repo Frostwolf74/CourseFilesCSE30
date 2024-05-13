@@ -7,15 +7,17 @@ public class Course {
 	private int courseID, maxEnrollment;
 	private double requiredGPA;
 	private String courseName;
+	private Instructor instructor;
 	private ArrayList<Course> req = new ArrayList<Course>(); // contains courseIDs
 	static Scanner input = new Scanner(System.in);
 	
-	public Course(int courseID, String courseName, ArrayList<Course> req, int maxEnrollment, double requiredGPA) {
+	public Course(int courseID, String courseName, ArrayList<Course> req, int maxEnrollment, double requiredGPA, Instructor instructor) {
 		this.courseID = courseID;
 		this.courseName = courseName;
 		this.req = req;
 		this.setMaxEnrollment(maxEnrollment);
 		this.setRequiredGPA(requiredGPA);
+		this.instructor = instructor;
 	}
 	
 	public int getCourseID() {
@@ -45,24 +47,6 @@ public class Course {
 		this.req = req;
 	}
 	
-	public boolean reqCheckCourse(ArrayList<Course> course) { // prereq check for course -> student
-		int k=0;
-		for(int i = 0; i < req.size(); ++i) {
-			for(int j = 0; j < course.size(); ++j) {
-				if(req.get(i) == course.get(j)) {
-					++k;
-				}
-			}
-		}
-		
-		if(k >= course.size()) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-
 	public int getMaxEnrollment() {
 		return maxEnrollment;
 	}
@@ -79,9 +63,9 @@ public class Course {
 		this.requiredGPA = requiredGPA;
 	}
 	
-	public void printAll(int i) {
+	public void printAll(int i) { // cannot use toString because of arrayList printing using for loop 
 		System.out.println(
-				"Course Name: " + getCourseName() +
+				"Course Name: " + courseName +
 				"\nCourse ID: " + getCourseID() +
 				"\nMaximum enrollment: " + getMaxEnrollment() +
 				"\nMinimum GPA: " + getRequiredGPA()
@@ -95,5 +79,17 @@ public class Course {
 		else {
 			System.out.println("\nThere are no prerequisites for this course");
 		}
+	}
+	
+	public Instructor getInstructor() { 
+		return instructor;
+	}
+	
+	public void printInstructor() {
+		System.out.println("\nAssigned instructor: \n" + getInstructor().getName());
+	}
+
+	public void setInstructor(Instructor instructor) {
+		this.instructor = instructor;
 	}
 }
