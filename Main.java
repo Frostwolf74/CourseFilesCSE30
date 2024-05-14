@@ -64,11 +64,12 @@ public class Main {
 			break;
 		case 3: // printing course info
 			for(int i = 0; i < mainCourses.size(); i++) {
-				mainCourses.get(i).printAll(i); // i is the course index 
-			
-				if(mainCourses.get(i) instanceof programmingCourse) {
+				mainCourses.get(i).printAll(i); // i is the course index, prints all course info
+				
+				if(mainCourses.get(i) instanceof programmingCourse) { // prints instructors 
 					if(((programmingCourse) mainCourses.get(i)).getInstructor() != null) {
-						((programmingCourse) mainCourses.get(i)).printInstructor();
+						((programmingCourse) mainCourses.get(i)).printStudents();	
+						((programmingCourse) mainCourses.get(i)).printInstructor();			
 					}
 					else {
 						System.out.println("There are no instructors assigned to this course");
@@ -76,14 +77,16 @@ public class Main {
 				}
 				if(mainCourses.get(i) instanceof mathCourse) {
 					if(((mathCourse) mainCourses.get(i)).getInstructor() != null) {
+						((mathCourse) mainCourses.get(i)).printStudents();
 						((mathCourse) mainCourses.get(i)).printInstructor();
+						
 					}
 					else {
 						System.out.println("There are no instructors assigned to this course");
 					}
 				}
 				
-				System.out.println("--------------------------------------------\n");
+				System.out.println("-----------------------------------------------\n");
 			}
 			mainMenu();
 			break;
@@ -127,15 +130,21 @@ public class Main {
 		ArrayList<Course> student2PreReqs = new ArrayList<Course>();
 		student2PreReqs.add(mainCourses.get(0));
 		student2PreReqs.add(mainCourses.get(1));
+		ArrayList<Course> allPreReqs = new ArrayList<Course>();
+		allPreReqs.add(mainCourses.get(0));
+		allPreReqs.add(mainCourses.get(1));
+		allPreReqs.add(mainCourses.get(2));
+		allPreReqs.add(mainCourses.get(3));
 		
 		mainStudents.add(new Student(student1PreReqs, "Student 1", "Computer Science", 1, 3.0));
 		mainStudents.add(new Student(student2PreReqs, "Student 2", "Mathematics", 2, 2.0));
 		mainStudents.add(new Student(student2PreReqs, "Student 3", "Computer Science", 3, 4.0));
 		mainStudents.add(new Student(student2PreReqs, "Student 4", "None", 4, 1.0));
 		
-		for(int i = 0; i < 29; ++i) { // XXX debug to fill course with students
-			mainStudents.add(new Student(student1PreReqs, "Student" + i, "Computer Science", i+4, 3.0));
-		}
+//		for(int i = 4; i < 20; ++i) { // XXX debug to fill course with students
+//			mainStudents.add(new Student(allPreReqs, "Student " + i, "Computer Science", i+4, 3.0));
+//			((programmingCourse) mainCourses.get(3)).addStudent(mainStudents.get(i)); 
+//		}
 	
 		mainMenu();
 	}

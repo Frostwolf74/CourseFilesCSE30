@@ -2,7 +2,7 @@ package CourseManagement;
 
 import java.util.ArrayList;
 
-public class Instructor { // TODO complete
+public class Instructor {
 	private String name, email, hours;
 	private ArrayList<Course> courses = new ArrayList<Course>(); // courses the instructor has
 	
@@ -40,7 +40,7 @@ public class Instructor { // TODO complete
 		return courses;
 	}
 	
-	public void addCourse(Course course) {
+	public void addCourse(Course course) { // instructors dont need a req check for now
 		courses.add(course);
 	}
 	

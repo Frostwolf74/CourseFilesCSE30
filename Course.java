@@ -66,14 +66,14 @@ public class Course {
 	public void printAll(int i) { // cannot use toString because of arrayList printing using for loop 
 		System.out.println(
 				"Course Name: " + courseName +
-				"\nCourse ID: " + getCourseID() +
-				"\nMaximum enrollment: " + getMaxEnrollment() +
-				"\nMinimum GPA: " + getRequiredGPA()
+				"\nCourse ID: " + courseID +
+				"\nMaximum enrollment: " + maxEnrollment +
+				"\nMinimum GPA: " + requiredGPA
 		);
-		if(getReq().size() != 0) {
+		if(req.size() != 0) {
 			System.out.println("\nPrerequisites: ");
 			for(int j = 0; j < i; ++j) {
-				System.out.println(getReq().get(j).getCourseName());
+				System.out.println(req.get(j).courseName);
 			}
 		}
 		else {
@@ -86,7 +86,7 @@ public class Course {
 	}
 	
 	public void printInstructor() {
-		System.out.println("\nAssigned instructor: \n" + getInstructor().getName());
+		System.out.println("\nAssigned instructor: \n" + instructor.getName());
 	}
 
 	public void setInstructor(Instructor instructor) {

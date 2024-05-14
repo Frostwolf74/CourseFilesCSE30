@@ -37,7 +37,7 @@ public class mathCourse extends Course {
 		switch(student.reqCheck(this)) {
 		case -1: // returns -1 if all checks passed
 			students.add(student);
-			System.out.printf("\u001b[32m" + "\n%s has been added to the course" + "\u001B[0m", student.getName());
+			System.out.printf("\u001b[32m" + "\n%s has been added to the course\n" + "\u001B[0m", student.getName());
 			student.addCourse(this);
 			break;
 		case 1:
@@ -50,6 +50,10 @@ public class mathCourse extends Course {
 			System.out.printf("\u001B[31m" + "\nThis course is full" + "\u001B[0m");
 			break;
 		}
+	}
+	
+	public void printStudents() {
+		System.out.println("\nNumber of students enrolled: " + students.size());
 	}
 	
 	public void removeStudent(Student student) { 
